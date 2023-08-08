@@ -1,0 +1,23 @@
+@import 'utilities/_colors.scss';
+@import 'auth';
+
+a{
+    text-decoration: none;
+}
+.info-text{
+    color: $primary;
+    font-size: .8rem;
+}
+.info-warning{
+    color: $country_third;
+}
+
+.error{
+    color: $country_secondary;
+    font-size: .7rem;
+}
+
+.text-small{
+    font-size: .8rem;
+    color: $subdue;
+}
