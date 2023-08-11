@@ -5,12 +5,17 @@ import Loader from "../components/shared/Loader";
 import {Backdrop} from "../components/shared/Backdrop";
 import {useAuth} from '../hooks/useAuth';
 
-function Auth() {
+
+interface LoginProps {
+    LoggedIn: string | boolean;
+}
+
+// @ts-ignore
+function Auth({LoggedIn}) {
     const {loading} = useAuth();
 
     return (
         <>
-
             <div className='gt_lg_container'>
             <div className="gt_login_header">
             </div>
@@ -28,7 +33,10 @@ function Auth() {
                         )
                     }
                     <h3 className="gt_form_title">BIENVENUE A G-EMBASSY</h3>
-                    <LoginForm />
+                    {
+                        !LoggedIn ? <LoginForm /> : 'You are already logged in - Logout? or continue your session'
+                    }
+
                 </div>
             </div>
         </div>
