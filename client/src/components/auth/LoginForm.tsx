@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import React,{useState} from "react";
 import {useLoginMutation} from "../../queries/authQueries";
 import Loader from '../shared/Loader';
+import Cookies from 'js-cookie';
 
 const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email address').required('Required'),
@@ -36,13 +37,16 @@ const LoginForm: React.FC = () => {
         onSubmit:  (values: any): any => {
             handleLogin(values)
                 .then(userData => {
+                    const {accessToken} = userData;
+                    Cookies.set('GTC_AUTH', accessToken);
+                    sessionStorage.setItem('isAuth', 'true');
                     navigate('/dashboard-em', {state: {data: userData}});
                 })
                 .catch(error => {
                     setIsError(true);
                     console.log('Login error', error)
                 })
-        }
+            }
     });
 
     const errorStyle = {

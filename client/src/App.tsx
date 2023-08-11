@@ -1,19 +1,41 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './assests/scss/app.scss';
 import Auth from './pages/Auth';
-import {Routes, Route} from 'react-router-dom';
-import {DashboardEm} from "./pages/employee/DashboardEm";
-import Loader from "./components/shared/Loader";
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { DashboardEm } from './pages/employee/DashboardEm';
+import Loader from './components/shared/Loader';
+
 
 function App() {
-  return (
-    <div className="app">
-        <Routes>
-            <Route path='/' element={<Auth />} />
-            <Route path='/dashboard-em' element={<DashboardEm />} />
-        </Routes>
-    </div>
-  );
+    const isAuthorized = sessionStorage.getItem('isAuth');
+    const location = useLocation();
+
+    const redirectComponentRef = useRef(null);
+
+    useEffect(() => {
+        if (isAuthorized) {
+            if (location.state && location.state.from) {
+                // Set the redirect component for Navigate
+                // @ts-ignore
+                redirectComponentRef.current = <Navigate to={location.state.from} />;
+            } else {
+                // @ts-ignore
+                redirectComponentRef.current = <Navigate to="/dashboard-em" />;
+            }
+        }
+    }, [isAuthorized, location]);
+
+    // Provide a default redirection option in case redirectComponentRef.current is null
+    const defaultRedirect = <Navigate to="/dashboard-em" />;
+
+    return (
+        <div className="app">
+            <Routes>
+                {<Route path="/" element={<Auth LoggedIn={isAuthorized}/> } />}
+                <Route path="/dashboard-em" element={<DashboardEm />} />
+            </Routes>
+        </div>
+    );
 }
 
 export default App;

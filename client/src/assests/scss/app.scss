@@ -1,5 +1,6 @@
 @import 'utilities/_colors.scss';
 @import 'auth';
+@import 'dashboard.scss';
 
 a{
     text-decoration: none;
@@ -111,7 +112,6 @@ a{
 
 
 // Backdrop
-
 .backdrop{
     width: 100%;
     height: 100%;
@@ -120,4 +120,25 @@ a{
     left: 0;
     background: rgba(0, 0, 0, 0.69);
     z-index: 5;
+}
+
+//others
+//overwrite material ui
+.css-78trlr-MuiButtonBase-root-MuiIconButton-root{
+    color: #f2f0f0 !important;
+}
+.icon{
+    color: #f2f0f0;
+}
+//sidebar menus
+.css-ahj2mt-MuiTypography-root{
+    font-size: .87rem !important;
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+.pro-menu-item{
+    color: $omega !important;
+}
+h1, h2, h3,h4,h5,h6,p{
+    font-family: Quicksand, sans-serif !important;
 }
