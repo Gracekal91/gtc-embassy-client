@@ -488,7 +488,7 @@ export const mockLineData = [
     },
     {
         id: "france",
-        color: dark,
+        color: 'red',
         data: [
             {
                 x: "plane",
@@ -542,7 +542,7 @@ export const mockLineData = [
     },
     {
         id: "us",
-        color: dark,
+        color: 'blue',
         data: [
             {
                 x: "plane",

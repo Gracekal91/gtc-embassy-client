@@ -39,6 +39,14 @@ const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
 
+    const handleCollapse = () =>{
+        if(isCollapsed){
+            window.location.reload();
+            setIsCollapsed(false)
+        }
+        setIsCollapsed(!isCollapsed)
+    }
+
     return (
         <Box
             sx={{
@@ -64,7 +72,7 @@ const Sidebar = () => {
                 <Menu iconShape="square">
                     {/* LOGO AND MENU ICON */}
                     <MenuItem
-                        onClick={() => setIsCollapsed(!isCollapsed)}
+                        onClick={handleCollapse}
                         icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
                         style={{
                             margin: "10px 0 20px 0",
@@ -81,7 +89,7 @@ const Sidebar = () => {
                                 <Typography variant="h6" color='white' sx={{fontSize: '.9rem'}}>
                                     EMPLOYEE
                                 </Typography>
-                                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
+                                <IconButton onClick={handleCollapse}>
                                     <ArrowBackIosIcon sx={{color:'white'}}/>
                                 </IconButton>
                             </Box>
