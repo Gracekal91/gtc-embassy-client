@@ -21,7 +21,7 @@ function Auth({LoggedIn}) {
             </div>
             <div className="gt_lg_content">
                 <div className="gt_lp_text">
-                    <h1>Soyez le bienvenue a l'embassade de la Republique Democratique du Congo</h1>
+                    <h1>Soyez le bienvenue a l'ambassade de la Republique Democratique du Congo</h1>
                 </div>
                 <div className="gt_lp_form">
                     {  loading &&
