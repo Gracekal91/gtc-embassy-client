@@ -43,11 +43,10 @@ export const DashboardEm = () => {
                             <StatCard
                                 title="12,361"
                                 subtitle="Emails Sent"
-                                progress="0.75"
                                 increase="+14%"
                                 icon={
                                     <EmailIcon
-                                        sx={{ color: theme.green['green600'], fontSize: "26px" }}
+                                        sx={{ color: theme.blue['secondary'], fontSize: "26px" }}
                                     />
                                 }
                             />
@@ -66,11 +65,10 @@ export const DashboardEm = () => {
                             <StatCard
                                 title="12,361"
                                 subtitle="Emails Sent"
-                                progress="0.75"
                                 increase="+14%"
                                 icon={
                                     <EmailIcon
-                                        sx={{ color: theme.green['green600'], fontSize: "26px" }}
+                                        sx={{ color: theme.blue['secondary'], fontSize: "26px" }}
                                     />
                                 }
                             />
@@ -89,11 +87,10 @@ export const DashboardEm = () => {
                             <StatCard
                                 title="12,361"
                                 subtitle="Emails Sent"
-                                progress="0.75"
                                 increase="+14%"
                                 icon={
                                     <EmailIcon
-                                        sx={{ color: theme.green['green600'], fontSize: "26px" }}
+                                        sx={{ color: theme.blue['secondary'], fontSize: "26px" }}
                                     />
                                 }
                             />
@@ -111,11 +108,10 @@ export const DashboardEm = () => {
                             <StatCard
                                 title="161"
                                 subtitle="Emails Sent"
-                                progress="0.75"
                                 increase="+49%"
                                 icon={
                                     <EmailIcon
-                                        sx={{ color: theme.green['green600'], fontSize: "26px" }}
+                                        sx={{ color: theme.blue['secondary'], fontSize: "26px" }}
                                     />
                                 }
                             />

@@ -21,14 +21,14 @@ const DashboardHeader = ({ title, subtitle }) => {
             >
                 {title}
             </Typography>
-            <Typography variant="h6" color="#94e2cd" sx={{fontSize: '.9rem'}}>
+            <Typography variant="h6"  sx={{fontSize: '.9rem', color: theme.blue['secondary']}}>
                 {subtitle}
             </Typography>
         </Box>
             <div>
                 <Button
                     sx={{
-                        backgroundColor: theme.blue['blue700'],
+                        backgroundColor: theme.blue['secondary'],
                         color: "white",
                         fontSize: "10px",
                         padding: "5px 10px",

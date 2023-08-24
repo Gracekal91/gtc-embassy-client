@@ -4,6 +4,7 @@ import Auth from './pages/Auth';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { DashboardEm } from './pages/employee/DashboardEm';
 import Loader from './components/shared/Loader';
+import {Visas} from "./pages/employee/Visas";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Routes>
                 {<Route path="/" element={<Auth LoggedIn={isAuthorized}/> } />}
                 <Route path="/dashboard-em" element={<DashboardEm />} />
+                <Route path="/visas" element={<Visas />}/>
             </Routes>
         </div>
     );

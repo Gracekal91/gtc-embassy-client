@@ -142,3 +142,24 @@ a{
 h1, h2, h3,h4,h5,h6,p{
     font-family: Quicksand, sans-serif !important;
 }
+
+
+tr{
+    th{
+        background: #007fff !important;
+        color: #fff !important;
+    }
+    td{
+        color: #616060 !important;
+        font-size: .8rem !important;
+        font-family: 'Quicksand', sans-serif !important;
+    }
+}
+
+tr:nth-child(odd){
+    background: rgb(241, 241, 241);
+}
+//override react/table Mui
+.MuiTableRow-root.MuiTableRow-head.css-1q1u3t4-MuiTableRow-root{
+    background-color: blue !important;
+}

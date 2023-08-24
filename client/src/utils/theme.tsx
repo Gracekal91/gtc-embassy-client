@@ -10,6 +10,7 @@ export const theme: any =
             blue700: '#2e4a90',
             blue800: '#1e296e',
             blue900: '#0f142f',
+            secondary: '#007fff'
         },
         "primo": {
             primo100: '#d0d1d5',

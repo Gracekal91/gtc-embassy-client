@@ -10,11 +10,7 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
-import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 // @ts-ignore
@@ -64,7 +60,7 @@ const Sidebar = () => {
                     color: "#fff !important",
                 },
                 "& .pro-menu-item.active": {
-                    color: "#70d8bd !important",
+                    color: '#007fff !important',
                 },
             }}
         >
@@ -125,7 +121,7 @@ const Sidebar = () => {
                     <Box paddingLeft={isCollapsed ? undefined : "10%"}>
                         <Item
                             title="Dashboard"
-                            to="/"
+                            to="/dashboard-em"
                             icon={<HomeOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
@@ -133,7 +129,7 @@ const Sidebar = () => {
 
                         <Item
                             title="Visa Application"
-                            to="/team"
+                            to="/visas"
                             icon={<PeopleOutlinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
@@ -174,7 +170,13 @@ const Sidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
-
+                        <Item
+                            title="Logout"
+                            to="/logout"
+                            icon={<HelpOutlineOutlinedIcon />}
+                            selected={selected}
+                            setSelected={setSelected}
+                        />
                     </Box>
                 </Menu>
             </ProSidebar>
