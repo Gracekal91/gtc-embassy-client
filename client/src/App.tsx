@@ -5,6 +5,7 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { DashboardEm } from './pages/employee/DashboardEm';
 import Loader from './components/shared/Loader';
 import {Visas} from "./pages/employee/Visas";
+import {VisaDetail} from "./pages/employee/VisaDetail";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                 {<Route path="/" element={<Auth LoggedIn={isAuthorized}/> } />}
                 <Route path="/dashboard-em" element={<DashboardEm />} />
                 <Route path="/visas" element={<Visas />}/>
+                <Route path="/visas/:id" element={ <VisaDetail/> }/>
             </Routes>
         </div>
     );

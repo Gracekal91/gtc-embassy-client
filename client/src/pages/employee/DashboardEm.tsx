@@ -28,7 +28,6 @@ export const DashboardEm = () => {
                         gridAutoRows="140px"
                         gap="20px"
                         ml="17px"
-
                     >
                         {/*first row*/}
                         <Box

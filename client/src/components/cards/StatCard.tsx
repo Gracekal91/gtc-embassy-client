@@ -5,7 +5,6 @@ import ProgressCircle from "./ProgressCircle";
 
 // @ts-ignore
 const StatCard = ({ title, subtitle, icon, increase }) => {
-
     return (
         <Box width="100%" m="0 30px" >
             <Box display="flex" justifyContent="space-between">
