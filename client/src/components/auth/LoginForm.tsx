@@ -38,7 +38,7 @@ const LoginForm: React.FC = () => {
             handleLogin(values)
                 .then(userData => {
                     const {accessToken} = userData;
-                    Cookies.set('GTC_AUTH', accessToken);
+                    Cookies.set('GTE_AUTH', accessToken);
                     sessionStorage.setItem('isAuth', 'true');
                     navigate('/dashboard-em', {state: {data: userData}});
                 })

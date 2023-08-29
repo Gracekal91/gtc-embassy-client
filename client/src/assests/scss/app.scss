@@ -163,3 +163,69 @@ tr:nth-child(odd){
 .MuiTableRow-root.MuiTableRow-head.css-1q1u3t4-MuiTableRow-root{
     background-color: blue !important;
 }
+
+.printable_table{
+    border-collapse: collapse;
+    width: 90%;
+    margin-top: 1rem;
+
+    .print_header_2{
+        margin: 0;
+        font-size: 1.1rem;
+    }
+    tr{
+        background: inherit !important;
+    }
+    th, td{
+        background: inherit !important;
+        border: 1px solid rgba(255, 255, 255, 0.54);
+        padding: .3rem 0 .3rem .5rem;
+        color: rgba(255, 255, 255, 0.76) !important;
+    }
+
+    span{
+        margin: 0 .7rem;
+    }
+
+    .cage{
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border: 1px solid #fff;
+        position: relative;
+    }
+    .icon_checked{
+        position: absolute;
+        color: white;
+        bottom: .5px;
+        font-size: 15px;
+    }
+}
+
+//
+.progress{
+    width: 8px;
+    height: 8px;
+    background: green;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.rejected{
+    width: 8px;
+    height: 8px;
+    background: red;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.done{
+    width: 8px;
+    height: 8px;
+    background: green;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
