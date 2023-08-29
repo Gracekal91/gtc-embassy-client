@@ -12,20 +12,20 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-
+import {Logout} from "../../services/api";
 // @ts-ignore
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, to = '', icon, selected, setSelected, onClick }) => {
     return (
         <MenuItem
             active={selected === title}
             style={{
                 color: 'white',
             }}
-            onClick={() => setSelected(title)}
+            onClick={onClick || (() => setSelected(title))}
             icon={icon}
         >
             <Typography>{title}</Typography>
-            <Link to={to} />
+            {to && <Link to={to} />}
         </MenuItem>
     );
 };
@@ -43,12 +43,13 @@ const Sidebar = () => {
         setIsCollapsed(!isCollapsed)
     }
 
+    // @ts-ignore
     return (
         <Box
             sx={{
                 height: '100vh',
                 "& .pro-sidebar-inner": {
-                    backgroundColor:'#1F2A40!important'
+                    backgroundColor: '#1F2A40!important'
                 },
                 "& .pro-icon-wrapper": {
                     backgroundColor: "transparent !important",
@@ -64,12 +65,13 @@ const Sidebar = () => {
                 },
             }}
         >
+
             <ProSidebar collapsed={isCollapsed}>
                 <Menu iconShape="square">
                     {/* LOGO AND MENU ICON */}
                     <MenuItem
                         onClick={handleCollapse}
-                        icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
+                        icon={isCollapsed ? <MenuOutlinedIcon/> : undefined}
                         style={{
                             margin: "10px 0 20px 0",
                             //color: colors.grey[100],
@@ -86,7 +88,7 @@ const Sidebar = () => {
                                     EMPLOYEE
                                 </Typography>
                                 <IconButton onClick={handleCollapse}>
-                                    <ArrowBackIosIcon sx={{color:'white'}}/>
+                                    <ArrowBackIosIcon sx={{color: 'white'}}/>
                                 </IconButton>
                             </Box>
                         )}
@@ -100,14 +102,14 @@ const Sidebar = () => {
                                     width="100px"
                                     height="100px"
                                     src={`../../assets/user.png`}
-                                    style={{ cursor: "pointer", borderRadius: "50%" }}
+                                    style={{cursor: "pointer", borderRadius: "50%"}}
                                 />
                             </Box>
                             <Box textAlign="center">
                                 <Typography
                                     variant="h6"
                                     color='white'
-                                    sx={{ m: "10px 0 0 0" }}
+                                    sx={{m: "10px 0 0 0"}}
                                 >
                                     Ed Roh
                                 </Typography>
@@ -122,60 +124,67 @@ const Sidebar = () => {
                         <Item
                             title="Dashboard"
                             to="/dashboard-em"
-                            icon={<HomeOutlinedIcon />}
+                            icon={<HomeOutlinedIcon/>}
                             selected={selected}
                             setSelected={setSelected}
+                            onClick=''
                         />
 
                         <Item
                             title="Visa Application"
                             to="/visas"
-                            icon={<PeopleOutlinedIcon />}
+                            icon={<PeopleOutlinedIcon/>}
                             selected={selected}
                             setSelected={setSelected}
+                            onClick=''
                         />
                         <Item
                             title="Tenant Lieu"
                             to="/contacts"
-                            icon={<ContactsOutlinedIcon />}
+                            icon={<ContactsOutlinedIcon/>}
                             selected={selected}
                             setSelected={setSelected}
+                            onClick=''
                         />
                         <Item
                             title="Certificat de naissance"
                             to="/invoices"
-                            icon={<ReceiptOutlinedIcon />}
+                            icon={<ReceiptOutlinedIcon/>}
                             selected={selected}
                             setSelected={setSelected}
+                            onClick=''
                         />
 
                         <Item
                             title="Passport"
                             to="/form"
-                            icon={<PersonOutlinedIcon />}
+                            icon={<PersonOutlinedIcon/>}
                             selected={selected}
                             setSelected={setSelected}
+                            onClick=''
                         />
                         <Item
                             title="Permis de conduite"
                             to="/calendar"
-                            icon={<CalendarTodayOutlinedIcon />}
+                            icon={<CalendarTodayOutlinedIcon/>}
                             selected={selected}
                             setSelected={setSelected}
+                            onClick=''
                         />
                         <Item
                             title="FAQ Page"
                             to="/faq"
-                            icon={<HelpOutlineOutlinedIcon />}
+                            icon={<HelpOutlineOutlinedIcon/>}
                             selected={selected}
                             setSelected={setSelected}
+                            onClick=''
                         />
                         <Item
                             title="Logout"
-                            to="/logout"
-                            icon={<HelpOutlineOutlinedIcon />}
+                            icon={<HelpOutlineOutlinedIcon/>}
                             selected={selected}
                             setSelected={setSelected}
+                            onClick={Logout}
                         />
                     </Box>
                 </Menu>
