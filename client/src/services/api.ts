@@ -30,8 +30,6 @@ export const Login = async(email: string, password: string)=>{
 
             // @ts-ignore
             sessionStorage.setItem('Auth', JSON.stringify(auth));
-
-            console.log('DATA', response.data)
             return response.data;
         }
 
@@ -55,12 +53,16 @@ export const Logout = async() => {
         },
             {headers}
         );
-        console.log('LOGOUT RESPONSE', response)
-        if(response.status === 200){
+        if(response.status === 200 || response.status === 401){
             LogoutHandler()
             window.location.href = '/'
         }
     }catch (e) {
+        // @ts-ignore
+        if(e.response.status === 401){
+            LogoutHandler()
+            window.location.href = '/'
+        }
         console.log('Error', e, 'Custom Error', 'Could not log the use out' );
     }
 }

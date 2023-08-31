@@ -6,17 +6,16 @@ import { DashboardEm } from './pages/employee/DashboardEm';
 import Loader from './components/shared/Loader';
 import {Visas} from "./pages/employee/Visas";
 import {VisaDetail} from "./pages/employee/VisaDetail";
-
-
+import ProtectedRoute from "./components/shared/Protected";
+import {getAccessToken} from "./utils/helper";
 
 function App() {
-    const isAuthorized = sessionStorage.getItem('isAuth');
+    const isLoggedIn: boolean = getAccessToken();
     const location = useLocation();
-
     const redirectComponentRef = useRef(null);
 
     useEffect(() => {
-        if (isAuthorized) {
+        if (isLoggedIn) {
             if (location.state && location.state.from) {
                 // Set the redirect component for Navigate
                 // @ts-ignore
@@ -26,16 +25,21 @@ function App() {
                 redirectComponentRef.current = <Navigate to="/dashboard-em" />;
             }
         }
-    }, [isAuthorized, location]);
+    }, [isLoggedIn, location]);
 
     // Provide a default redirection option in case redirectComponentRef.current is null
     const defaultRedirect = <Navigate to="/dashboard-em" />;
 
+    // @ts-ignore
     return (
         <div className="app">
             <Routes>
-                {<Route path="/" element={<Auth LoggedIn={isAuthorized}/> } />}
-                <Route path="/dashboard-em" element={<DashboardEm />} />
+                {<Route path="/" element={<Auth LoggedIn={isLoggedIn}/> } />}
+                <Route path='dashboard-em' element={
+                <ProtectedRoute>
+                    <DashboardEm />
+                </ProtectedRoute>
+                } />
                 <Route path="/visas" element={<Visas />}/>
                 <Route path="/visas/:id" element={ <VisaDetail/> }/>
             </Routes>
