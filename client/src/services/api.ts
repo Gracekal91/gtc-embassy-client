@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from "js-cookie";
-import {LogoutHandler} from "../utils/helper";
+import {LogoutHandler, getUserData} from "../utils/helper";
 
 const api = axios.create({
     baseURL: 'http://localhost:3500/api/v1',
@@ -30,8 +30,6 @@ export const Login = async(email: string, password: string)=>{
 
             // @ts-ignore
             sessionStorage.setItem('Auth', JSON.stringify(auth));
-
-            console.log('DATA', response.data)
             return response.data;
         }
 
@@ -43,30 +41,47 @@ export const Login = async(email: string, password: string)=>{
 export const Logout = async() => {
     try{
         //check if Auth exist
-        const data = sessionStorage.getItem('Auth')
-        if (!data) return "Can't log user out - kill the session"
-        const dataObj = JSON.parse(data);
+        const user: any = getUserData();
+        console.log('USER', user);
+        if (!user) return "Can't log user out - kill the session"
         const headers = {
-            Authorization: `Bearer ${dataObj.token}`
+            Authorization: `Bearer ${user.token}`
         }
         const response = await api.post(`/auth/logout`, {
             //TODO: grab the ID - pass along with the access token.
-            id: dataObj.userId
+            id: user.userId
         },
             {headers}
         );
-        console.log('LOGOUT RESPONSE', response)
-        if(response.status === 200){
+        if(response.status === 200 || response.status === 401){
             LogoutHandler()
             window.location.href = '/'
         }
     }catch (e) {
+        // @ts-ignore
+        if(e.response.status === 401 || e.response.status === 403){
+            LogoutHandler()
+            window.location.href = '/'
+        }
         console.log('Error', e, 'Custom Error', 'Could not log the use out' );
     }
 }
 
+  export const GetData = async () =>{
+    try{
 
-
-
-
-//Create axios response type
+        // @ts-ignore
+        const user: any = JSON.parse(getUserData());
+        const userToken = user.token;
+        console.log('VISAS - RESPONSE', userToken)
+        // @ts-ignore
+        const response = await api.get (`/visas`,{
+            headers: {
+                Authorization: `Bearer ${userToken}`,
+            },
+        });
+        return response.data;
+    }catch(e){
+        console.log('Error', e)
+    }
+  }
