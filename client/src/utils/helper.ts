@@ -6,7 +6,16 @@ export const LogoutHandler = () =>{
     console.log('Successful logged-out')
 }
 
-export const getAccessToken = () => {
+export const isAuthenticated = () => {
     const token = Cookies.get('GTE_AUTH');
    return !!token;
+}
+
+export const getUserData = () => {
+    const token = Cookies.get('GTE_AUTH');
+    if(token){
+     const userData = sessionStorage.getItem('Auth');
+     console.log('USER', userData)
+     return userData;
+    }
 }

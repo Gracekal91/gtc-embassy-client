@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, useNavigate } from "react-router-dom";
-import {getAccessToken} from "../../utils/helper";
+import {isAuthenticated} from "../../utils/helper";
 
 interface ProtectedRouteProps {
     children: React.ReactNode;
@@ -11,7 +11,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const checkUserToken = () => {
-        if (!getAccessToken()) {
+        if (!isAuthenticated()) {
             setIsLoggedIn(false);
             return navigate('/');
         }

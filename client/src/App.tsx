@@ -7,10 +7,10 @@ import Loader from './components/shared/Loader';
 import {Visas} from "./pages/employee/Visas";
 import {VisaDetail} from "./pages/employee/VisaDetail";
 import ProtectedRoute from "./components/shared/Protected";
-import {getAccessToken} from "./utils/helper";
+import {isAuthenticated} from "./utils/helper";
 
 function App() {
-    const isLoggedIn: boolean = getAccessToken();
+    const isLoggedIn: boolean = isAuthenticated();
     const location = useLocation();
     const redirectComponentRef = useRef(null);
 
