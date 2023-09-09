@@ -19,7 +19,7 @@ export interface ColumnInterface{
 
 export interface DataInterface{
     num: number,
-        name: string;
+    name: string;
     code: string;
     citizenship: string;
     duration: string;
