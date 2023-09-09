@@ -57,8 +57,6 @@ const columns: readonly ColumnInterface[] = [
     {id: 'status', label: 'Status', width: 100},
 ];
 
-
-
 function createData(
     num: number,
     name: string,
