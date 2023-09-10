@@ -1,8 +1,15 @@
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
+import {useGetDataById} from '../../hooks/useGetDataById';
+import {useParams} from "react-router-dom";
 
 export const PrintableForm = () => {
     // @ts-ignore
+    const {id} = useParams();
+    const{data, error, loading} = useGetDataById(id) as {data: any, error: any, loading: any};
 
+    if(error || !data) console.log("No data - or error while fetching single visa");
+    if(loading) console.log("Data is loading... please wait")
+    console.log('DATA', data)
     return(
         <div style={{
             marginLeft: '17px',
@@ -55,27 +62,28 @@ export const PrintableForm = () => {
                 <tbody>
                 <tr>
                     <td>Nom [Name]</td>
-                    <td> JOHN </td>
+                    <td> {data?.name} </td>
                     <td>Maiden name</td>
-                    <td> JEAN LOUIS</td>
+                    <td> {data?.maiden_name}</td>
                 </tr>
                 <tr>
-                    <td>Nom [Name]</td>
-                    <td colSpan={3}> JOHN </td>
+                    <td>Middle Name [Name]</td>
+                    <td> {data?.middle_names} </td>
+                    <td>Surname name</td>
+                    <td> {data?.first_name}</td>
                 </tr>
                 <tr>
                     <td>place of birth</td>
-                    <td> Paris </td>
+                    <td> {data?.city_of_birth} </td>
                     <td>Pays [Country of birth]</td>
-                    <td> France</td>
+                    <td> {data?.country_of_birth}</td>
                 </tr>
                 <tr>
                     <td>Date of Birth</td>
-                    <td colSpan={3}> 30 - Nov - 1996 </td>
+                    <td colSpan={3}>{data?.date_of_birth}</td>
                 </tr>
                 </tbody>
             </table>
-
 
             <table className='printable_table'>
                 <colgroup>
@@ -91,10 +99,17 @@ export const PrintableForm = () => {
                         <span>Feminin</span>
                         <span className="cage">
                             {/*display based on condition pass children on the one that matches*/}
-                            <CheckRoundedIcon className='icon_checked'/>
+                            {data?.sex === 'Female' &&
+                                <CheckRoundedIcon className='icon_checked'/>
+                            }
                         </span>
                         <span>Masculin</span>
-                        <span className="cage"></span>
+                        <span className="cage">
+                            {/*display based on condition pass children on the one that matches*/}
+                            {data?.sex === 'Male' &&
+                                <CheckRoundedIcon className='icon_checked'/>
+                            }
+                        </span>
                     </td>
                 </tr>
                 <tr>
@@ -102,18 +117,34 @@ export const PrintableForm = () => {
                     <td colSpan={3}>
                         <span>Single</span>
                         <span className="cage">
-                            {/*display based on condition pass children on the one that matches*/}
+                            { data?.marital_status === 'Single' &&
                             <CheckRoundedIcon className='icon_checked'/>
+                            }
                         </span>
                         <span>Married</span>
-                        <span className="cage"></span>
+                        <span className="cage">
+                            { data?.marital_status === 'Married' &&
+                                <CheckRoundedIcon className='icon_checked'/>
+                            }
+                        </span>
                         <span>Divorced</span>
                         <span className="cage">
+                            { data?.marital_status === 'Divorced' &&
+                                <CheckRoundedIcon className='icon_checked'/>
+                            }
                         </span>
                         <span>Widow</span>
-                        <span className="cage"></span>
+                        <span className="cage">
+                            { data?.marital_status === 'Widow' &&
+                                <CheckRoundedIcon className='icon_checked'/>
+                            }
+                        </span>
                         <span>Other</span>
-                        <span className="cage"></span>
+                        <span className="cage">
+                            { data?.marital_status === 'Other' &&
+                                <CheckRoundedIcon className='icon_checked'/>
+                            }
+                        </span>
                     </td>
                 </tr>
                 <tr>
@@ -137,13 +168,13 @@ export const PrintableForm = () => {
                 <tr>
                     <td>Profession</td>
                     <td colSpan={3}>
-                        AI Engineer
+                        {data?.profession}
                     </td>
                 </tr>
                 <tr>
                     <td>Residence</td>
                     <td colSpan={3}>
-                        23 avenue de la fourue, Paris
+                        {data?.residence_address}
                     </td>
                 </tr>
                 <tr>
@@ -160,62 +191,78 @@ export const PrintableForm = () => {
                 </tr>
                 <tr>
                     <td>Personal Cellphone</td>
-                    <td> JOHN </td>
+                    <td> {data?.personal_cellphone} </td>
                     <td>Email Address</td>
-                    <td> jean@gmail.com</td>
+                    <td> {data?.email_address} </td>
                 </tr>
                 <tr>
                     <td>Father's Name</td>
-                    <td> Andre </td>
+                    <td> {data?.father_name} </td>
                     <td>Citizenship</td>
-                    <td> French</td>
+                    <td> {data?.father_citizenship}</td>
                 </tr>
                 <tr>
                     <td>Mother's Name</td>
-                    <td> Liliane </td>
+                    <td> {data?.mother_name} </td>
                     <td>Citizenship</td>
-                    <td>French</td>
+                    <td>{data?.mother_citizenship}</td>
                 </tr>
                 <tr>
                     <td>Passport's type</td>
                     <td colSpan={3}>
                         <span>Ordinary</span>
                         <span className="cage">
-                            {/*display based on condition pass children on the one that matches*/}
-                            <CheckRoundedIcon className='icon_checked'/>
+                            {
+                                data?.type_of_passport === 'ordinary' &&
+                                <CheckRoundedIcon className='icon_checked'/>
+                            }
                         </span>
                         <span>Service</span>
-                        <span className="cage"></span>
+                        <span className="cage">
+                            {
+                                data?.type_of_passport === 'service' &&
+                                <CheckRoundedIcon className='icon_checked'/>
+                            }
+                        </span>
                         <span>Diplomatic</span>
                         <span className="cage">
+                            {
+                                data?.type_of_passport === 'diplomatic' &&
+                                <CheckRoundedIcon className='icon_checked'/>
+                            }
                         </span>
                         <span>Other</span>
-                        <span className="cage"></span>
+                        <span className="cage">
+                            {
+                                data?.type_of_passport === 'other' &&
+                                <CheckRoundedIcon className='icon_checked'/>
+                            }
+                        </span>
                     </td>
                 </tr>
                 <tr>
                     <td>Travel's document number</td>
                     <td colSpan={3}>
-                        TPIRY35
+                        {data?.travel_document_number}
                     </td>
                 </tr>
                 <tr>
                     <td>Valid from</td>
                     <td></td>
                     <td>Valid until</td>
-                    <td></td>
+                    <td>{data?.passport_validation_date}</td>
                 </tr>
                 <tr>
                     <td>Issued by</td>
-                    <td colSpan={3}></td>
+                    <td colSpan={3}>{data?.passport_issued_by}</td>
                 </tr>
                 <tr>
                     <td>Residence permit's number</td>
-                    <td colSpan={3}></td>
+                    <td colSpan={3}>{data?.residence_permit_number}</td>
                 </tr>
                 <tr>
                     <td>Valid until</td>
-                    <td colSpan={3}></td>
+                    <td colSpan={3}>{data?.permit_expiration_date}</td>
                 </tr>
                 <tr>
                     <td>Purpose of travel</td>
@@ -248,15 +295,15 @@ export const PrintableForm = () => {
                 </tr>
                 <tr>
                     <td>Ticket's Number</td>
-                    <td colSpan={3}>RY76RIS8</td>
+                    <td colSpan={3}>{data?.ticket_reference}</td>
                 </tr>
                 <tr>
                     <td>Ticket Issued By</td>
-                    <td colSpan={3}></td>
+                    <td colSpan={3}>{data?.ticket_issued_by}</td>
                 </tr>
                 <tr>
                     <td>Destination In DRC</td>
-                    <td colSpan={3}></td>
+                    <td colSpan={3}>{data?.destination_city}</td>
                 </tr>
                 {/* Add more rows as needed */}
                 </tbody>
@@ -264,12 +311,12 @@ export const PrintableForm = () => {
 
             <table className='printable_table'>
                 <colgroup>
-                    <col style={{ width: '10%' }} /> {/* Adjust the width as needed */}
-                    <col style={{ width: '15%' }} /> {/* Adjust the width as needed */}
-                    <col style={{ width: '15%' }} /> {/* Adjust the width as needed */}
-                    <col style={{ width: '30%' }} /> {/* Adjust the width as needed */}
-                    <col style={{ width: '10%' }} /> {/* Adjust the width as needed */}
-                    <col style={{ width: '20%' }} /> {/* Adjust the width as needed */}
+                    <col style={{ width: '10%' }} />
+                    <col style={{ width: '15%' }} />
+                    <col style={{ width: '15%' }} />
+                    <col style={{ width: '30%' }} />
+                    <col style={{ width: '10%' }} />
+                    <col style={{ width: '20%' }} />
                 </colgroup>
                 <thead>
                 <th colSpan={6}>FIRST POINT OF ENTRY IN  DRC</th>

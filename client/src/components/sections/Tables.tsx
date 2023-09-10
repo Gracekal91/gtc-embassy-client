@@ -15,21 +15,13 @@ const TableData = () => {
 const {data, loading, error} = useGetData();
 if(error || !data) console.log('error while fetching data')
 if(loading) console.log('Loading data')
-console.log('============================', 'Hello', data)
 
 // Assuming 'data' is an array of objects with 'name' property
 // @ts-ignore
-const curratedData: RowInterface[] = data?.map((item, index) => ({
-    num: index,
-    names: item.name,
-    code: item.travel_document_number, // Replace with the actual property you want for 'code'
-    citizenship: item.citizenship_at_birth, // Replace with the actual property you want for 'citizenship'
-    duration: item.duration, // Replace with the actual property you want for 'duration'
-    type: item.type_of_passport,
-    status: item.sex
-}));
+
 
 const columns: readonly ColumnInterface[] = [
+    {id: 'hid', label: 'hid', width: 0},
     {id: 'num', label: 'No', width: 40},
     {id: 'name', label: 'Names', minWidth: 100},
     {id: 'code', label: 'Passport Number', minWidth: 100},
@@ -58,7 +50,8 @@ const columns: readonly ColumnInterface[] = [
 ];
 
 function createData(
-    num: number,
+    hid: any,
+    num: any,
     name: string,
     code: string,
     citizenship: string,
@@ -66,14 +59,14 @@ function createData(
     type: string,
     status: string
 ): DataInterface {
-    return {num, name, code, citizenship, duration, type, status};
+    return {hid, num, name, code, citizenship, duration, type, status};
 }
 
 // @ts-ignore
     const rows = data?.map((item: any, index: number ) => {
     // @ts-ignore
-        return createData(index, item.name, item.travel_document_number, item.citizenship_at_birth, item.name,
-            item.type_of_passport, item.sex)
+        return createData(item._id, index+1, item.name, item.travel_document_number, item.citizenship_at_birth, item.name,
+            item.type_of_passport, item.status)
 })
 
 
@@ -92,7 +85,7 @@ function StickyHeadTable() {
         setPage(0);
     };
 
-    const handleRedirect = (id: number) =>{
+    const handleRedirect = (id: any) =>{
         return window.location.href = `/visas/${id}`;
     }
 
@@ -122,7 +115,7 @@ function StickyHeadTable() {
                                     <TableCell
                                         key={column.id}
                                         align={column.align}
-                                        style={{minWidth: column.minWidth}}
+                                        style={{minWidth: column.minWidth, display: column.id === 'hid' ? 'none' : 'table-cell'}}
                                     >
                                         {column.label}
                                     </TableCell>
@@ -136,23 +129,31 @@ function StickyHeadTable() {
                                     return name.includes(searchQuery.toLowerCase());
                                 })
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((row: { [x: string]: any; code: React.Key | null | undefined; num: number; }) => {
+                                .map((row: { [x: string]: any; code: React.Key | null | undefined; num: any; }) => {
                                     return (
                                         <TableRow hover role="checkbox" tabIndex={-1} key={row.code}
                                                   style={{cursor: 'pointer'}}
-                                                  onClick={() => handleRedirect(row.num)}
+                                                  onClick={() => handleRedirect(row.hid)}
                                         >
                                             {columns.map((column) => {
                                                 const value = row[column.id];
                                                 return (
-
-                                                    <TableCell key={column.id} align={column.align}>
-                                                        {column.id === 'status' ?
-                                                            <span className="progress"></span> : ''}
-                                                        {column.format && typeof value === 'number'
+                                                    <TableCell key={column.id} align={column.align}
+                                                    style={{display: column.id === 'hid' ? 'none' : 'table-cell'}}
+                                                    >
+                                                        {
+                                                            column.id === 'status' &&
+                                                            <>
+                                                                { value == 'submitted' && <span className="progress"></span>}
+                                                                { value == 'payment' && <span className="progress"></span>}
+                                                                { value == 'progress' && <span className="progress"></span>}
+                                                            </>
+                                                        }
+                                                        {
+                                                            column.format && typeof value === 'number'
                                                             ? column.format(value)
-                                                            : value}
-
+                                                            : value
+                                                        }
                                                     </TableCell>
                                                 );
                                             })}

@@ -9,7 +9,7 @@ export interface RowInterface{
 }
 
 export interface ColumnInterface{
-    id: 'num' | 'name' | 'code' | 'citizenship' | 'duration' | 'type' | 'status';
+    id: 'hid'| 'num' | 'name' | 'code' | 'citizenship' | 'duration' | 'type' | 'status';
     label: string;
     minWidth?: number;
     width?: number;
@@ -18,7 +18,8 @@ export interface ColumnInterface{
 }
 
 export interface DataInterface{
-    num: number,
+    hid: any,
+    num: any,
     name: string;
     code: string;
     citizenship: string;

@@ -73,7 +73,6 @@ export const Logout = async() => {
         // @ts-ignore
         const user: any = JSON.parse(getUserData());
         const userToken = user.token;
-        console.log('VISAS - RESPONSE', userToken)
         // @ts-ignore
         const response = await api.get (`/visas`,{
             headers: {
@@ -84,4 +83,24 @@ export const Logout = async() => {
     }catch(e){
         console.log('Error', e)
     }
+  }
+
+  export const GetVisaById = async (id: any) =>{
+      // @ts-ignore
+      const user: any = JSON.parse(getUserData());
+      const userToken = user.token;
+      console.log('SINGLE VISA - RESPONSE', userToken);
+
+      try{
+          const response = await api.get(`/visaby/${id}`, {
+              headers: {
+                  Authorization: `Bearer ${userToken}`,
+              },
+          })
+            console.log('DATA FROM API', response.data)
+          return response.data;
+      }catch (e) {
+          console.log('Error - Failed to fetch a single visa --- /visaby/id -- from api.ts', e)
+      }
+
   }
