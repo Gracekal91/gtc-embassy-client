@@ -4,7 +4,9 @@ import DashboardHeader from "../../components/sections/DashboardHeader";
 import {theme} from "../../utils/theme";
 import {PrintableForm} from "../../components/pdfs/PrintableForm";
 
+
 export const VisaDetail = () => {
+
     return (
         <>
             <div className='dashboard_container'>

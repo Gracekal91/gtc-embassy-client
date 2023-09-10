@@ -19,3 +19,6 @@ export const getUserData = () => {
      return userData;
     }
 }
+
+// @ts-ignore
+
