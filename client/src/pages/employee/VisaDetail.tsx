@@ -41,7 +41,7 @@ export const VisaDetail = () => {
                                 }}
                               value={selectedValue} onChange={handleSelection}
                         >
-                            <option value="in-progress">in progress</option>
+                            <option value="in-progress">in-progress</option>
                             <option value="submitted">Submitted</option>
                             <option value="done">Done</option>
                             <option value="payment">Payment</option>
