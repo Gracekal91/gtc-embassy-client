@@ -104,3 +104,28 @@ export const Logout = async() => {
       }
 
   }
+
+export const UpdateStatus = async (id: any, value: any) => {
+    // @ts-ignore
+    const user = JSON.parse(getUserData());
+    const userToken = user.token;
+
+    try {
+        const response = await api.patch(`/visa/${id}`, { id, value }, {
+            headers: {
+                Authorization: `Bearer ${userToken}`,
+            },
+        });
+
+        if (response.status === 200) {
+            return response.data; // Successfully updated
+        } else {
+            // Handle unexpected response status codes here
+            console.error('Unexpected response status:', response.status);
+        }
+    } catch (e: any) {
+        console.error('Error trying to update visa status:', e.message);
+        throw e;
+    }
+}
+
