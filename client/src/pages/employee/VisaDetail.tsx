@@ -7,22 +7,18 @@ import {UpdateStatus} from "../../services/api";
 import {useParams} from "react-router-dom";
 import {useState} from "react";
 
-
 export const VisaDetail = () => {
     const {id} = useParams();
     const [selectedValue, setSelectedValue] = useState('');
 
     const handleSelection = async (e: any) => {
         const newValue = e.target.value;
-
         try {
             setSelectedValue(newValue);
-            console.log('STATUS', newValue);
         } catch (error) {
             console.error('Error updating status:', error);
         }
     };
-
 
     return (
         <>
