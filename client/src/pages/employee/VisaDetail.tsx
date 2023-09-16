@@ -7,22 +7,18 @@ import {UpdateStatus} from "../../services/api";
 import {useParams} from "react-router-dom";
 import {useState} from "react";
 
-
 export const VisaDetail = () => {
     const {id} = useParams();
     const [selectedValue, setSelectedValue] = useState('');
 
     const handleSelection = async (e: any) => {
         const newValue = e.target.value;
-
         try {
             setSelectedValue(newValue);
-            console.log('STATUS', newValue);
         } catch (error) {
             console.error('Error updating status:', error);
         }
     };
-
 
     return (
         <>
@@ -45,7 +41,7 @@ export const VisaDetail = () => {
                                 }}
                               value={selectedValue} onChange={handleSelection}
                         >
-                            <option value="in-progress">in progress</option>
+                            <option value="in-progress">in-progress</option>
                             <option value="submitted">Submitted</option>
                             <option value="done">Done</option>
                             <option value="payment">Payment</option>
