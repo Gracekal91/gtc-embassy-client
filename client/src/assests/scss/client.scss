@@ -1,0 +1,115 @@
+
+.first-screen-container {
+  width: 100%;
+  height: 100vh;
+  color: #ffffff;
+
+  .header {
+    height: 50vh;
+    background: #014284;
+    position: relative;
+
+    .header-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+
+      h1 {
+        margin: 0;
+        padding: 0;
+      }
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+
+  .body-content {
+    width: 80%;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    @media screen and(max-width: 1200px) {
+      width: 99%;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media screen and(max-width: 960px) {
+      width: 90%;
+      grid-template-columns: 1fr;
+    }
+
+    .card-container {
+      display: flex;
+      width: 100%;
+      height: 140px;
+      margin-bottom: 1rem;
+      background: #f7f9fb;
+      box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
+      @media screen and(max-width: 480px) {
+        height: 110px;
+      }
+
+      .left {
+        width: 150px;
+        height: 140px;
+        background: #fff;
+        border-right: 2px solid red;
+        position: relative;
+        @media screen and(max-width: 480px) {
+          width: 120px;
+          height: 110px;
+        }
+      }
+
+      .right{
+        padding-left: 1rem;
+        color: #141b2d;
+        width: 100%;
+        padding-right: 1rem;
+        hr{
+          width: 90%;
+          text-align: left;
+          margin: 0 0;
+        }
+        p{
+          margin: .9rem .1rem .5rem .1rem;
+          font-size: .6rem;
+          font-weight: bold;
+        }
+        h4{
+          margin: .5rem 0 .5rem 0;
+          font-size: .8rem;
+        }
+
+        a{
+          display: inline-block;
+          font-size: .6rem;
+          background: #014284;
+          color: yellow;
+          padding: .4rem 1rem;
+          border-radius: .2rem;
+        }
+      }
+
+
+      .bottom-ribbon {
+        width: 100%;
+        height: 20px;
+        background: red;
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        font-weight: bold;
+        font-size: .9rem;
+        @media screen and(max-width: 480px) {
+          height: 18px;
+          font-size: .8rem;
+        }
+      }
+    }
+  }
+}
