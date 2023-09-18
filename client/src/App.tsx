@@ -8,6 +8,7 @@ import {Visas} from "./pages/employee/Visas";
 import {VisaDetail} from "./pages/employee/VisaDetail";
 import ProtectedRoute from "./components/shared/Protected";
 import {isAuthenticated} from "./utils/helper";
+import {ClientFormPage} from "./pages/client/ClientFormPage";
 
 function App() {
     const isLoggedIn: boolean = isAuthenticated();
@@ -42,6 +43,7 @@ function App() {
                 } />
                 <Route path="/visas" element={<Visas />}/>
                 <Route path="/visas/:id" element={ <VisaDetail/> }/>
+                <Route path='/form' element={<ClientFormPage /> }/>
             </Routes>
         </div>
     );
