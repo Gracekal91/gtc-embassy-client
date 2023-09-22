@@ -9,6 +9,7 @@ import {VisaDetail} from "./pages/employee/VisaDetail";
 import ProtectedRoute from "./components/shared/Protected";
 import {isAuthenticated} from "./utils/helper";
 import {ClientFormPage} from "./pages/client/ClientFormPage";
+import {ApplicationLandingPage} from "./pages/client/ApplicationLandingPage";
 
 function App() {
     const isLoggedIn: boolean = isAuthenticated();
@@ -43,7 +44,8 @@ function App() {
                 } />
                 <Route path="/visas" element={<Visas />}/>
                 <Route path="/visas/:id" element={ <VisaDetail/> }/>
-                <Route path='/form' element={<ClientFormPage /> }/>
+                <Route path='/applications' element={<ApplicationLandingPage /> }/>
+                <Route path='/applications/visa' element={<ClientFormPage /> }/>
             </Routes>
         </div>
     );
