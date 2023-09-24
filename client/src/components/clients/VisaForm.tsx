@@ -3,6 +3,12 @@ import {VisaOne} from "./VisaOne";
 import {VisaTwo} from "./VisaTwo";
 import embleme from "../../assests/images/embleme.png";
 import {VisaThree} from "./VisaThree";
+import {Button, ButtonGroup } from "@mui/material";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import BackupIcon from '@mui/icons-material/Backup';
+import MyStepper from '../shared/MyStepper'
+
 
 export const VisaForm = () => {
 
@@ -32,6 +38,7 @@ export const VisaForm = () => {
         // Handle form submission here
     };
 
+    // @ts-ignore
     return(
         <>
         <div style={{width: '100%', position: 'relative'}}>
@@ -41,15 +48,18 @@ export const VisaForm = () => {
                     <h1>DRC Embassy in Pretoria</h1>
                 </div>
             </div>
-            <div className="form-container">
+            <div className="form-container" style={{padding: '1rem'}}>
+
+                <MyStepper myStep={currentStep}/>
                 <form onSubmit={handleSubmit}>
                     {currentStep === 1 && <VisaOne />}
                     {currentStep === 2 && <VisaTwo formData={formData} handleChange={handleChange} />}
                     {currentStep === 3 && <VisaThree formData={formData} handleChange={handleChange} />}
+                    {currentStep === 4 && <VisaThree formData={formData} handleChange={handleChange} />}
 
-                    <button type="button" onClick={handlePrevStep} disabled={currentStep === 1}>Previous</button>
-                    <button type="button" onClick={handleNextStep} disabled={currentStep === 3}>Next</button>
-                    {currentStep === 3 && <button type="submit">Submit</button>}
+                        <Button startIcon={<ArrowBackIcon />} variant="outlined" size="small" onClick={handlePrevStep} disabled={currentStep === 1} style={{textTransform: 'capitalize', marginTop: '.5rem'}}>Prev</Button>
+                        <Button endIcon={<ArrowForwardIcon />} variant="outlined" size="small" onClick={handleNextStep} disabled={currentStep === 4} style={{textTransform: 'capitalize', marginTop: '.5rem'}}>Next</Button>
+                        {currentStep === 4 && <Button variant="outlined" size="small" style={{textTransform: 'capitalize', marginTop: '.5rem'}} startIcon={<BackupIcon />}>Submit</Button>}
                 </form>
             </div>
         </div>

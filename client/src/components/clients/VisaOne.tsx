@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, Button } from '@mui/material';
+import {TextField, Button} from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,6 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import MyAccordion from '../shared/MyAccordion'
+import MyModal from '../shared/MyModal'
 
 function createData(
     type: string,
@@ -26,7 +28,7 @@ const rows = [
 export default function DenseTable() {
     return (
         <TableContainer component={Paper}>
-            <Table sx={{ maxWidth: 600 }} size="small" aria-label="a dense table">
+            <Table sx={{ maxWidth: 700 }} size="small" aria-label="a dense table">
                 <TableHead>
                     <TableRow>
                         <TableCell>Visa Type</TableCell>
@@ -66,7 +68,7 @@ export const VisaOne = () => {
     return (
         <div>
             <h2>Step 1</h2>
-            <h3>VSA FEES</h3>
+            <h3>GENERAL INFORMATION</h3>
             <DenseTable />
             <div className="content-box">
 
@@ -77,12 +79,10 @@ export const VisaOne = () => {
                     <li>A Valid Passport (Min - 6 Months)</li>
                     <li>Visa Fees Are Non-Refundable</li>
                     <li>Your Reasons for Visiting the DRC</li>
-                    <li>Business - </li>
-                    <li>A Fully Visa Form</li>
-                    <li>A Fully Visa Form</li>
-
                 </ul>
             </div>
+            <MyAccordion />
+            <MyModal />
         </div>
     );
 }

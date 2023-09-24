@@ -253,6 +253,33 @@ export const VisaThree: React.FC<Step1FormProps> = ({ formData, handleChange }) 
                     <FormControlLabel value="conference" control={<Radio />} label="Religious conference" />
 
                 </RadioGroup>
+                <TextField
+                    name="Ticket Reference"
+                    label="Ticket Reference"
+                    variant="outlined"
+                    fullWidth
+                    value={formData.field2}
+                    onChange={handleChange}
+                    size='small'
+                />
+                <TextField
+                    name="Ticket issued"
+                    label="Ticket issued"
+                    variant="outlined"
+                    fullWidth
+                    value={formData.field2}
+                    onChange={handleChange}
+                    size='small'
+                />
+                <TextField
+                    name="Destination in D.R.Congo"
+                    label="Destination in D.R.Congo"
+                    variant="outlined"
+                    fullWidth
+                    value={formData.field2}
+                    onChange={handleChange}
+                    size='small'
+                />
             </form>
         </div>
     );

@@ -5,7 +5,6 @@ export const ClientFormPage = () => {
     return (
         <>
             <div className="home-container">
-
                 <VisaForm />
             </div>
 
