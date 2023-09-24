@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import embleme from '../../assests/images/embleme.png';
 import visa from '../../assests/images/visa.avif';
-export const FirstScreen = () => {
+export const ApplicationLandingPage = () => {
     return(
         <>
        <div className='first-screen-container'>
