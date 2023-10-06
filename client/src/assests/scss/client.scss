@@ -144,7 +144,7 @@ margin-bottom: 1rem;
   top: 100%;
   left: 50%;
   border-radius: .5rem;
-  transform: translate(-50%, -25%);
+  transform: translate(-50%, -12rem);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 
   .group-input{
@@ -165,6 +165,26 @@ margin-bottom: 1rem;
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
   height: 40px !important;
 }
+.css-1pysi21-MuiFormLabel-root-MuiInputLabel-root{
+  font-size: .8rem !important;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+  color: gray !important;
+}
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input{
+ padding: .55rem !important;
+  color: gray;
+}
+
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input{
+  color: gray !important;
+  font-size: .8rem !important;
+}
+
+@media screen and (min-width: 600px){
+  height: 40px !important;
+}
 
 //visa one
 
@@ -183,3 +203,4 @@ margin-bottom: 1rem;
     }
   }
 }
+

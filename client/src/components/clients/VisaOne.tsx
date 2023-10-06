@@ -67,7 +67,6 @@ interface Step1FormProps {
 export const VisaOne = () => {
     return (
         <div>
-            <h2>Step 1</h2>
             <h3>GENERAL INFORMATION</h3>
             <DenseTable />
             <div className="content-box">

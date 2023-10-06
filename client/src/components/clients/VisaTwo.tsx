@@ -16,16 +16,21 @@ import styled from "styled-components";
 
 interface Step1FormProps {
     formData: {
-        field1: string;
-        field2: string;
+        name: string;
+        maidenName: any;
+        middleName: string;
+        firstName: string;
+        placeOfBirth: string;
+        countryOfBirth: string;
+        citizenshipAtBirth: string;
+        citizenship: string;
+        dateOfBirth: any;
+        spouseName: string;
+        gender: string;
+        maritalStatus: string;
         // ... add other fields from your form data
     };
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-
-interface AppState {
-    selectedDate: Date;
 }
 
 const DatePickerWrapper = styled.div`
@@ -38,93 +43,89 @@ const DatePickerWrapper = styled.div`
 
 export const VisaTwo: React.FC<Step1FormProps> = ({ formData, handleChange }) => {
 
-    const [state, setState] = useState<AppState>({ selectedDate: new Date() });
+    const [state, setState] = useState({ selectedDate: new Date() });
 
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
     return (
         <div>
             <h2>Step 2</h2>
                 <form>
                     <div className="group-input">
                         <TextField
-                            name="Name"
+                            name="name"
                             label="Name"
                             variant="outlined"
                             fullWidth
-                            value={formData.field1}
-                            onChange={handleChange}
+                            onChange={(e: any) => {handleChange(e)}}
+                            value={formData.name}
                             size='small'
                         />
                         <TextField
-                            name="Maiden Name"
+                            name="maidenName"
                             label="Maiden Name"
                             variant="outlined"
                             fullWidth
-                            value={formData.field2}
-                            onChange={handleChange}
+                            value={formData.maidenName}
+                            onChange={(e: any) => {handleChange(e)}}
                             size='small'
                         />
                     </div>
                     <div className="group-input">
                     <TextField
-                        name="Middle Name"
+                        name="middleName"
                         label="Middle Name"
                         variant="outlined"
                         fullWidth
-                        value={formData.field1}
-                        onChange={handleChange}
+                        value={formData.middleName}
+                        onChange={(e: any) => {handleChange(e)}}
                         size='small'
                     />
                     <TextField
-                        name="First Names"
+                        name="firstName"
                         label="First Names"
                         variant="outlined"
                         fullWidth
-                        value={formData.field2}
-                        onChange={handleChange}
+                        value={formData.firstName}
+                        onChange={(e: any) => {handleChange(e)}}
                         size='small'
                     />
                     </div>
                     <div className="group-input">
                     <TextField
-                        name="Place of Birth"
+                        name="placeOfBirth"
                         label="Place of Birth"
                         variant="outlined"
                         fullWidth
-                        value={formData.field1}
-                        onChange={handleChange}
+                        value={formData.placeOfBirth}
+                        onChange={(e: any) => {handleChange(e)}}
                         size='small'
                     />
                         <TextField
-                            name="Country of Birth"
+                            name="countryOfBirth"
                             label="Country of Birth"
                             variant="outlined"
                             fullWidth
-                            value={formData.field1}
-                            onChange={handleChange}
+                            value={formData.countryOfBirth}
+                            onChange={(e: any) => {handleChange(e)}}
                             size='small'
                         />
                     </div>
                     <TextField
-                        name="Nationality at Birth"
+                        name="citizenshipAtBirth"
                         label="Nationality at Birth"
                         variant="outlined"
                         fullWidth
-                        value={formData.field2}
-                        onChange={handleChange}
+                        value={formData.citizenshipAtBirth}
+                        onChange={(e: any) => {handleChange(e)}}
                         size='small'
                     />
                     <div className="group-input" style={{marginBottom: '.5rem'}}>
                     <TextField
-                        name="Citizenship"
+                        name="citizenship"
                         label="Citizenship"
                         variant="outlined"
                         fullWidth
-                        value={formData.field1}
-                        onChange={handleChange}
+                        value={formData.citizenship}
+                        onChange={(e: any) => {handleChange(e)}}
                         size='small'
                     />
 
@@ -132,15 +133,18 @@ export const VisaTwo: React.FC<Step1FormProps> = ({ formData, handleChange }) =>
                         <DatePicker
                             label="Date of birth"
                             value={state.selectedDate}
-                            onChange={(date: any) => setState({ ...state, selectedDate: date })}
+
                             // @ts-ignore
                             renderInput={(props) => (
                                 <TextField
+                                    sx={{fontSize: '.5rem'}}
                                     {...props}
-                                    name="field2"
-                                    label="Field 2"
+                                    name="dateOfBirth"
+                                    label="date of birth"
                                     variant="outlined"
                                     size="medium"
+                                    value={state.selectedDate}
+                                    onChange={(date: any) => setState({ ...state, selectedDate: date })}
                                 />
                             )}
                         />
@@ -150,12 +154,12 @@ export const VisaTwo: React.FC<Step1FormProps> = ({ formData, handleChange }) =>
 
                     <TextField
                         sx={{ marginBottom: '.5rem'}}
-                        name="Spouse name"
+                        name="spouseName"
                         label="Spouse's name"
                         variant="outlined"
                         fullWidth
-                        value={formData.field1}
-                        onChange={handleChange}
+                        value={formData.spouseName}
+                        onChange={(e: any) => {handleChange(e)}}
                         size='small'
                     />
 
@@ -170,6 +174,8 @@ export const VisaTwo: React.FC<Step1FormProps> = ({ formData, handleChange }) =>
                                     fontSize: 20,
                                 },
                             }}
+                            value={formData.gender} // Set the value prop to the selected gender
+                            onChange={(e: any) => {handleChange(e)}}
                         >
                             <FormControlLabel value="female" control={<Radio />} label="Female" />
                             <FormControlLabel value="male" control={<Radio />} label="Male" />
@@ -185,6 +191,9 @@ export const VisaTwo: React.FC<Step1FormProps> = ({ formData, handleChange }) =>
                                 fontSize: 20,
                             },
                         }}
+
+                        value={formData.maritalStatus} // Set the value prop to the selected gender
+                        onChange={(e: any) => {handleChange(e)}}
                     >
                         <FormControlLabel value="single" control={<Radio />} label="Single" />
                         <FormControlLabel value="married" control={<Radio />} label="Married" />
