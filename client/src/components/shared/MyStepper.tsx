@@ -8,9 +8,7 @@ import Typography from '@mui/material/Typography';
 
 const steps = ['infos', 'identification', 'more', 'other'];
 
-
 export default function HorizontalLinearStepper({myStep}: any) {
-    console.log('STEPPPPPPPPPP', myStep)
     const [activeStep, setActiveStep] = React.useState(0);
 
     return (
@@ -23,7 +21,7 @@ export default function HorizontalLinearStepper({myStep}: any) {
                     } = {};
                     return (
                         <Step key={label} {...stepProps}>
-                            <StepLabel {...labelProps}>{label}</StepLabel>
+                            <StepLabel {...labelProps}><p style={{fontSize: '.6rem'}}>{label}</p></StepLabel>
                         </Step>
                     );
                 })}
