@@ -8,39 +8,48 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import BackupIcon from '@mui/icons-material/Backup';
 import MyStepper from '../shared/MyStepper'
+import { Formik, Field, Form, FormikHelpers } from 'formik';
+import * as yup from 'yup';
+
+//validation
+const valideSchema = yup.object({
+    name: yup
+        .string()
+        .email('Enter a valid email')
+        .required('Name is required'),
+    password: yup
+        .string()
+        .min(8, 'Password should be of minimum 8 characters length')
+        .required('Password is required')
+});
+
+interface Values {
+    name: string;
+    maidenName: string;
+    middleName: string;
+    firstName: string;
+    placeOfBirth: any;
+    countryOfBirth: string;
+    citizenshipAtBirth: string;
+    citizenship: string;
+    dateOfBirth: any;
+    spouseName: string;
+    gender: any;
+    maritalStatus: any;
+    profession: string
+    residence: string
+    otherResidence: string
+    phoneNumber: any
+    father: any
+    fatherCitizenship: any
+    mother: any
+    motherCitizenship: any
+    passportType: any
+    travellingDocumentNumber: any
+}
 
 export const VisaForm = () => {
-    const [formData, setFormData] = useState({
-        // Initialize your form fields here
-        name: '',
-        maidenName: '',
-        middleName: '',
-        firstName: '',
-        placeOfBirth: '',
-        countryOfBirth: '',
-        citizenshipAtBirth: '',
-        citizenship: '',
-        dateOfBirth: '',
-        spouseName: '',
-        gender: '',
-        maritalStatus: '',
-        // ...
-    });
-
     const [currentStep, setCurrentStep] = useState(1);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement> | Date) => {
-        if (typeof e === 'object' && 'target' in e) {
-            // Handle input field changes
-            const { name, value } = e.target;
-            setFormData({ ...formData, [name]: value });
-        } else {
-            // Handle date picker changes
-            // @ts-ignore
-            setFormData({ ...formData, dateOfBirth: date });
-        }
-    };
-
 
     const handleNextStep = () => {
         setCurrentStep(currentStep + 1);
@@ -50,10 +59,9 @@ export const VisaForm = () => {
         setCurrentStep(currentStep - 1);
     };
 
-    const handleSubmit = () => {
-        console.log('DATA', formData)
-        //setFormData({} as typeof formData)
-    };
+    const submitMe = (values: any) => {
+        console.log('VALUES', values)
+    }
 
     // @ts-ignore
     return(
@@ -68,17 +76,47 @@ export const VisaForm = () => {
             <div className="form-container" style={{padding: '1rem'}}>
 
                 <MyStepper myStep={currentStep}/>
-                <form onSubmit={handleSubmit}>
+                <Formik
+                    initialValues={{
+                        name: '',
+                        maidenName: '',
+                        middleName: '',
+                        firstName: '',
+                        placeOfBirth: '',
+                        countryOfBirth: '',
+                        citizenshipAtBirth: '',
+                        citizenship: '',
+                        dateOfBirth: null,
+                        spouseName: '',
+                        gender: '',
+                        maritalStatus: ''
+                    }}
+                    //validationSchema={valideSchema} TODO
+                    onSubmit={values => submitMe(values)}
+                >
+                    {({
+                            values,
+                            errors,
+                            touched,
+                            handleChange,
+                            handleBlur,
+                            handleSubmit,
+                            isSubmitting,
+                            /* and other goodies */
+                        }) => (
+                        <Form >
+                            {currentStep === 1 && <VisaOne />}
+                            {currentStep === 2 && <VisaTwo  handleChange={handleChange}  values={values}/>}
+                            {currentStep === 3 && <VisaThree  handleChange={handleChange}  values={values}/>}
+                            {currentStep === 4 && <VisaTwo  handleChange={handleChange}  values={values}/>}
 
-                    {currentStep === 1 && <VisaOne />}
-                    {currentStep === 2 && <VisaTwo formData={formData} handleChange={handleChange} />}
-
-                        <Button startIcon={<ArrowBackIcon />} variant="outlined" size="small" onClick={handlePrevStep} disabled={currentStep === 1} style={{textTransform: 'capitalize', marginTop: '.5rem'}}>Prev</Button>
-                        <Button endIcon={<ArrowForwardIcon />} variant="outlined" size="small" onClick={handleNextStep} disabled={currentStep === 4} style={{textTransform: 'capitalize', marginTop: '.5rem'}}>Next</Button>
-                        {currentStep === 2 && <Button variant="outlined" size="small" style={{textTransform: 'capitalize', marginTop: '.5rem'}} startIcon={<BackupIcon />}
-                        onClick={handleSubmit}
-                        >Submit</Button>}
-                </form>
+                            <Button startIcon={<ArrowBackIcon />} variant="outlined" size="small" onClick={handlePrevStep} disabled={currentStep === 1} style={{textTransform: 'capitalize', marginTop: '.5rem'}}>Prev</Button>
+                            <Button endIcon={<ArrowForwardIcon />} variant="outlined" size="small" onClick={handleNextStep} disabled={currentStep === 4} style={{textTransform: 'capitalize', marginTop: '.5rem'}}>Next</Button>
+                            {currentStep === 4 && <Button type='submit' variant="outlined" size="small" style={{textTransform: 'capitalize', marginTop: '.5rem'}} startIcon={<BackupIcon />}
+                            >Submit</Button>}
+                        </Form>
+                    )}
+                </Formik>
             </div>
         </div>
         </>
