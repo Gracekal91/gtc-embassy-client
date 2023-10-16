@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TextField, Button, Divider} from '@mui/material';
+import {TextField, Button, Divider, FormControl, InputLabel, Select, MenuItem} from '@mui/material';
 
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -31,7 +31,7 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
     // @ts-ignore
     return (
         <div>
-            <h2>Step 2</h2>
+            <h2>Step 3</h2>
             <div className="group-input">
                 <TextField
                     name="profession"
@@ -82,15 +82,7 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                     onChange={handleChange('email')}
                     size='small'
                 />
-            <TextField
-                name="citizenshipAtBirth"
-                label="Nationality at Birth"
-                variant="outlined"
-                fullWidth
-                value={values.citizenshipAtBirth}
-                onChange={handleChange('citizenshipAtBirth')}
-                size='small'
-            />
+
             {/*<div className="group-input" style={{marginBottom: '.5rem'}}>*/}
             {/*    <TextField*/}
             {/*        name="citizenship"*/}
@@ -136,6 +128,7 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                     size='small'
                 />
             </div>
+
             <div className="group-input">
                 <TextField
                     name="mother"
@@ -157,38 +150,112 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 />
             </div>
             <TextField
-                name="travellingDocumentNumber"
-                label="Travel Doc. Number"
+                name="citizenshipAtBirth"
+                label="Travelling Document. Nbr"
                 variant="outlined"
                 fullWidth
-                value={values.travellingDocumentNumber}
-                onChange={handleChange('travellingDocumentNumber')}
+                value={values.citizenshipAtBirth}
+                onChange={handleChange('citizenshipAtBirth')}
+                size='small'
+            />
+            <div className="group-input" style={{marginBottom: '.5rem'}}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <Field name='dateOfBirth'>
+                                {({field, form}: {field: any, form: any}) => (
+                                    <DatePicker
+                                        id='dateOfBirth'
+                                        {...field}
+                                        selected={field.value}
+                                        onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
+                                    />
+                                )}
+                            </Field>
+                        </LocalizationProvider>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <Field name='dateOfBirth'>
+                                    {({field, form}: {field: any, form: any}) => (
+                                        <DatePicker
+                                            id='dateOfBirth'
+                                            {...field}
+                                            selected={field.value}
+                                            onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
+                                        />
+                                    )}
+                                </Field>
+                            </LocalizationProvider>
+            </div>
+            <TextField
+                name="mother"
+                label="Issued by"
+                variant="outlined"
+                fullWidth
+                value={values.mother}
+                onChange={handleChange('mother')}
                 size='small'
             />
             <div className="group-input">
                 <TextField
                     name="mother"
-                    label="Mother's name"
+                    label="Residence permit number"
                     variant="outlined"
                     fullWidth
                     value={values.mother}
                     onChange={handleChange('mother')}
                     size='small'
                 />
-                <TextField
-                    name="motherCitizenship"
-                    label="Mother's Nationality"
-                    variant="outlined"
-                    fullWidth
-                    value={values.motherCitizenship}
-                    onChange={handleChange('motherCitizenship')}
-                    size='small'
-                />
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <Field name='dateOfBirth'>
+                        {({field, form}: {field: any, form: any}) => (
+                            <DatePicker
+                                id='dateOfBirth'
+                                {...field}
+                                selected={field.value}
+                                onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
+                            />
+                        )}
+                    </Field>
+                </LocalizationProvider>
             </div>
+            <Divider sx={{marginTop: '.5rem', marginBottom: '.5rem'}}/>
+            <Select
+                label="Purpose of travel"
+                fullWidth
+                size='small'
+                value={values.passportType}
+                onChange={handleChange('passportType')}
+                displayEmpty
+                inputProps={{ 'aria-label': 'Purpose of travel' }}
+                sx={{
+                    marginBottom: '.5rem'
+                }}
+            >
+                <MenuItem value="" disabled>
+                    Select Purpose
+                </MenuItem>
+                <MenuItem value="ordinary">Family visit</MenuItem>
+                <MenuItem value="diplomatic">Service mission</MenuItem>
+                <MenuItem value="service">Official mission</MenuItem>
+                <MenuItem value="other">Tourism</MenuItem>
+                <MenuItem value="ordinary">Business</MenuItem>
+                <MenuItem value="diplomatic">Study</MenuItem>
+                <MenuItem value="service">Scientific - Cultural - Sport</MenuItem>
+                <MenuItem value="other">NGO Member</MenuItem>
+                <MenuItem value="service">Journalist</MenuItem>
+                <MenuItem value="other">Conference - Religious</MenuItem>
+            </Select>
+            <TextField
+                name="motherCitizenship"
+                label="Destination in D.R.Congo"
+                variant="outlined"
+                fullWidth
+                value={values.motherCitizenship}
+                onChange={handleChange('motherCitizenship')}
+                size='small'
+            />
             <div className="group-input">
                 <TextField
                     name="mother"
-                    label="Mother's name"
+                    label="Ticket reference"
                     variant="outlined"
                     fullWidth
                     value={values.mother}
@@ -197,7 +264,7 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 />
                 <TextField
                     name="motherCitizenship"
-                    label="Mother's Nationality"
+                    label="Ticket issued by"
                     variant="outlined"
                     fullWidth
                     value={values.motherCitizenship}
@@ -205,45 +272,6 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                     size='small'
                 />
             </div>
-            <Divider sx={{marginTop: '.5rem', marginBottom: '.5rem'}}/>
-
-            <FormLabel id="demo-row-radio-buttons-group-label"
-                       sx={{marginLeft: '.2rem', marginTop: '.5rem'}}>Type of Passport</FormLabel>
-            <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-                sx={{
-                    '& .MuiSvgIcon-root': {
-                        fontSize: 20,
-                    },
-                }}
-                value={values.passportType}
-                onChange={handleChange('passportType')}
-            >
-                <FormControlLabel value="ordinary" control={<Radio/>} label="Ordinary"/>
-                <FormControlLabel value="diplomatic" control={<Radio/>} label="Diplomatic"/>
-                <FormControlLabel value="service" control={<Radio/>} label="Service"/>
-                <FormControlLabel value="other" control={<Radio/>} label="Other"/>
-            </RadioGroup>
-            <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-                sx={{
-                    '& .MuiSvgIcon-root': {
-                        fontSize: 20,
-                    },
-                }}
-                value={values.maritalStatus}
-                onChange={handleChange('maritalStatus')}
-            >
-                <FormControlLabel value="single" control={<Radio/>} label="Single"/>
-                <FormControlLabel value="married" control={<Radio/>} label="Married"/>
-                <FormControlLabel value="divorced" control={<Radio/>} label="Divorced"/>
-                <FormControlLabel value="widow" control={<Radio/>} label="Widow"/>
-                <FormControlLabel value="other" control={<Radio/>} label="Other"/>
-            </RadioGroup>
         </div>
     );
 }

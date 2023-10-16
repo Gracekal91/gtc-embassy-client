@@ -10,6 +10,7 @@ import BackupIcon from '@mui/icons-material/Backup';
 import MyStepper from '../shared/MyStepper'
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import * as yup from 'yup';
+import { VisaFour } from "./VisaFour";
 
 //validation
 const valideSchema = yup.object({
@@ -45,7 +46,8 @@ interface Values {
     mother: any
     motherCitizenship: any
     passportType: any
-    travellingDocumentNumber: any
+    TravelDocumentNumber: any
+    visaType: any
 }
 
 export const VisaForm = () => {
@@ -89,7 +91,8 @@ export const VisaForm = () => {
                         dateOfBirth: null,
                         spouseName: '',
                         gender: '',
-                        maritalStatus: ''
+                        maritalStatus: '',
+                        visaType: ''
                     }}
                     //validationSchema={valideSchema} TODO
                     onSubmit={values => submitMe(values)}
@@ -108,7 +111,7 @@ export const VisaForm = () => {
                             {currentStep === 1 && <VisaOne />}
                             {currentStep === 2 && <VisaTwo  handleChange={handleChange}  values={values}/>}
                             {currentStep === 3 && <VisaThree  handleChange={handleChange}  values={values}/>}
-                            {currentStep === 4 && <VisaTwo  handleChange={handleChange}  values={values}/>}
+                            {currentStep === 4 && <VisaFour  handleChange={handleChange}  values={values}/>}
 
                             <Button startIcon={<ArrowBackIcon />} variant="outlined" size="small" onClick={handlePrevStep} disabled={currentStep === 1} style={{textTransform: 'capitalize', marginTop: '.5rem'}}>Prev</Button>
                             <Button endIcon={<ArrowForwardIcon />} variant="outlined" size="small" onClick={handleNextStep} disabled={currentStep === 4} style={{textTransform: 'capitalize', marginTop: '.5rem'}}>Next</Button>
