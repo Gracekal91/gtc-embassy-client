@@ -1,286 +1,278 @@
 import React, {useState} from 'react';
-import {TextField, Button, Divider} from '@mui/material';
-import FormLabel from "@mui/material/FormLabel";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Radio from "@mui/material/Radio";
-import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import {TextField, Button, Divider, FormControl, InputLabel, Select, MenuItem} from '@mui/material';
+
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
+import { DatePicker } from '@mui/x-date-pickers';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import styled from "styled-components";
+import { Field } from 'formik';
+
 
 interface Step1FormProps {
-    formData: {
-        field1: string;
-        field2: string;
-        // ... add other fields from your form data
-    };
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    values: any;
+    handleChange: any;
 }
 
-interface AppState {
-    selectedDate: Date;
-}
+const DatePickerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
 
-export const VisaThree: React.FC<Step1FormProps> = ({ formData, handleChange }) => {
-    const [state, setState] = useState<AppState>({ selectedDate: new Date() });
+export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
+
+    // @ts-ignore
     return (
         <div>
-            <h2>ACCESS TO THE D.R.Congo TERRITORY</h2>
-            <form>
+            <h2>Step 3</h2>
+            <div className="group-input">
                 <TextField
-                    name="Profession"
+                    name="profession"
                     label="Profession"
+                    id="profession"
                     variant="outlined"
                     fullWidth
-                    value={formData.field1}
-                    onChange={handleChange}
+                    size='small'
+                    value={values.profession}
+                    onChange={handleChange('profession')}
+                />
+                <TextField
+                    name="residence"
+                    label="Principal Residence"
+                    variant="outlined"
+                    fullWidth
+                    value={values.residence}
+                    onChange={handleChange('residence')}
+                    size='small'
+                />
+            </div>
+            <div className="group-input">
+                <TextField
+                    name="phoneNumber"
+                    label="Phone Number"
+                    variant="outlined"
+                    fullWidth
+                    value={values.phoneNumber}
+                    onChange={handleChange('phoneNumber')}
                     size='small'
                 />
                 <TextField
-                    name="Residence"
-                    label="Principal Address"
+                    name="otherResidence"
+                    label="Other residence"
                     variant="outlined"
                     fullWidth
-                    value={formData.field1}
-                    onChange={handleChange}
+                    value={values.otherResidence}
+                    onChange={handleChange('otherResidence')}
+                    size='small'
+                />
+            </div>
+                <TextField
+                    name="email"
+                    label="Email address"
+                    variant="outlined"
+                    fullWidth
+                    value={values.email}
+                    onChange={handleChange('email')}
+                    size='small'
+                />
+
+            {/*<div className="group-input" style={{marginBottom: '.5rem'}}>*/}
+            {/*    <TextField*/}
+            {/*        name="citizenship"*/}
+            {/*        label="Citizenship"*/}
+            {/*        variant="outlined"*/}
+            {/*        fullWidth*/}
+            {/*        value={values.citizenship}*/}
+            {/*        onChange={handleChange('citizenship')}*/}
+            {/*        size='small'*/}
+            {/*    />*/}
+
+            {/*    <LocalizationProvider dateAdapter={AdapterDateFns}>*/}
+            {/*        <Field name='dateOfBirth'>*/}
+            {/*            {({field, form}: {field: any, form: any}) => (*/}
+            {/*                <DatePicker*/}
+            {/*                    id='dateOfBirth'*/}
+            {/*                    {...field}*/}
+            {/*                    selected={field.value}*/}
+            {/*                    onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}*/}
+            {/*                />*/}
+            {/*            )}*/}
+            {/*        </Field>*/}
+            {/*    </LocalizationProvider>*/}
+            {/*</div>*/}
+
+            <div className="group-input">
+                <TextField
+                    name="father"
+                    label="Father's name"
+                    variant="outlined"
+                    fullWidth
+                    value={values.father}
+                    onChange={handleChange('father')}
                     size='small'
                 />
                 <TextField
-                    name="Residence"
-                    label="Address in D.R.Congo"
+                    name="fatherCitizenship"
+                    label="Father's Nationality"
                     variant="outlined"
                     fullWidth
-                    value={formData.field1}
-                    onChange={handleChange}
+                    value={values.fatherCitizenship}
+                    onChange={handleChange('fatherCitizenship')}
                     size='small'
                 />
-                <div className="group-input">
-                    <TextField
-                        name="Father's Name"
-                        label="Father's Name"
-                        variant="outlined"
-                        fullWidth
-                        value={formData.field1}
-                        onChange={handleChange}
-                        size='small'
-                    />
-                    <TextField
-                        name="Father's Citizenship"
-                        label="Father's Citizenship"
-                        variant="outlined"
-                        fullWidth
-                        value={formData.field2}
-                        onChange={handleChange}
-                        size='small'
-                    />
-                </div>
-                <div className="group-input">
-                    <TextField
-                        name="Mother's Name"
-                        label="Mother's Name"
-                        variant="outlined"
-                        fullWidth
-                        value={formData.field1}
-                        onChange={handleChange}
-                        size='small'
-                    />
-                    <TextField
-                        name="Mother's Citizenship"
-                        label="Mother's Citizenship"
-                        variant="outlined"
-                        fullWidth
-                        value={formData.field2}
-                        onChange={handleChange}
-                        size='small'
-                    />
-                </div>
-                <div className="group-input">
-                    <TextField
-                        name="Name"
-                        label="Name"
-                        variant="outlined"
-                        fullWidth
-                        value={formData.field1}
-                        onChange={handleChange}
-                        size='small'
-                    />
-                    <TextField
-                        name="Maiden Name"
-                        label="Maiden Name"
-                        variant="outlined"
-                        fullWidth
-                        value={formData.field2}
-                        onChange={handleChange}
-                        size='small'
-                    />
-                </div>
-                <div className="group-input">
-                    <TextField
-                        name="Phone Number"
-                        label="Phone Number"
-                        variant="outlined"
-                        fullWidth
-                        value={formData.field1}
-                        onChange={handleChange}
-                        size='small'
-                    />
-                    <TextField
-                        name="Email Address"
-                        label="Email Address"
-                        variant="outlined"
-                        fullWidth
-                        value={formData.field2}
-                        onChange={handleChange}
-                        size='small'
-                    />
-                </div>
-                <Divider sx={{marginTop: '.5rem', marginBottom: '.5rem'}}/>
-                <FormLabel id="demo-row-radio-buttons-group-label" sx={{marginLeft: '.2rem', marginTop: '.5rem' }}>Type of Passport</FormLabel>
-                <RadioGroup
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                    sx={{
-                        '& .MuiSvgIcon-root': {
-                            fontSize: 20,
-                        },
-                    }}
-                >
-                    <FormControlLabel value="Ordinary" control={<Radio />} label="Ordinary" />
-                    <FormControlLabel value="Diplomatic" control={<Radio />} label="Diplomatic" />
-                    <FormControlLabel value="Service" control={<Radio />} label="Service" />
-                    <FormControlLabel value="Other" control={<Radio />} label="Other" />
-                </RadioGroup>
+            </div>
+
+            <div className="group-input">
                 <TextField
-                    name="Travel Document's Number"
-                    label="Travel Document's Number"
+                    name="mother"
+                    label="Mother's name"
                     variant="outlined"
                     fullWidth
-                    value={formData.field1}
-                    onChange={handleChange}
+                    value={values.mother}
+                    onChange={handleChange('mother')}
                     size='small'
                 />
-                <div className="group-input">
+                <TextField
+                    name="motherCitizenship"
+                    label="Mother's Nationality"
+                    variant="outlined"
+                    fullWidth
+                    value={values.motherCitizenship}
+                    onChange={handleChange('motherCitizenship')}
+                    size='small'
+                />
+            </div>
+            <TextField
+                name="citizenshipAtBirth"
+                label="Travelling Document. Nbr"
+                variant="outlined"
+                fullWidth
+                value={values.citizenshipAtBirth}
+                onChange={handleChange('citizenshipAtBirth')}
+                size='small'
+            />
+            <div className="group-input" style={{marginBottom: '.5rem'}}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <Field name='dateOfBirth'>
+                                {({field, form}: {field: any, form: any}) => (
+                                    <DatePicker
+                                        id='dateOfBirth'
+                                        {...field}
+                                        selected={field.value}
+                                        onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
+                                    />
+                                )}
+                            </Field>
+                        </LocalizationProvider>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DatePicker
-                            label="Valid from"
-                            value={state.selectedDate}
-                            onChange={(date: any) => setState({ ...state, selectedDate: date })}
-                            // @ts-ignore
-                            renderInput={(props) => (
-                                <TextField
-                                    {...props}
-                                    name="field2"
-                                    label="Field 2"
-                                    variant="outlined"
-                                    size="medium"
-                                />
-                            )}
-                        />
-                    </LocalizationProvider>
-
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DatePicker
-                            label="Valid until"
-                            value={state.selectedDate}
-                            onChange={(date: any) => setState({ ...state, selectedDate: date })}
-                            // @ts-ignore
-                            renderInput={(props) => (
-                                <TextField
-                                    {...props}
-                                    name="field2"
-                                    label="Field 2"
-                                    variant="outlined"
-                                    size="medium"
-                                />
-                            )}
-                        />
-                    </LocalizationProvider>
-                </div>
-
-                <div className="group-input">
-                    <TextField
-                    name="Residence Permit Number"
-                    label="Residence Permit Number"
+                                <Field name='dateOfBirth'>
+                                    {({field, form}: {field: any, form: any}) => (
+                                        <DatePicker
+                                            id='dateOfBirth'
+                                            {...field}
+                                            selected={field.value}
+                                            onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
+                                        />
+                                    )}
+                                </Field>
+                            </LocalizationProvider>
+            </div>
+            <TextField
+                name="mother"
+                label="Issued by"
+                variant="outlined"
+                fullWidth
+                value={values.mother}
+                onChange={handleChange('mother')}
+                size='small'
+            />
+            <div className="group-input">
+                <TextField
+                    name="mother"
+                    label="Residence permit number"
                     variant="outlined"
                     fullWidth
-                    value={formData.field1}
-                    onChange={handleChange}
+                    value={values.mother}
+                    onChange={handleChange('mother')}
                     size='small'
                 />
-
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DatePicker
-                            label="Valid until"
-                            value={state.selectedDate}
-                            onChange={(date: any) => setState({ ...state, selectedDate: date })}
-                            // @ts-ignore
-                            renderInput={(props) => (
-                                <TextField
-                                    {...props}
-                                    name="field2"
-                                    label="Field 2"
-                                    variant="outlined"
-                                    size="medium"
-                                />
-                            )}
-                        />
-                    </LocalizationProvider>
-                </div>
-                <Divider sx={{marginTop: '.5rem', marginBottom: '.5rem'}}/>
-
-                <FormLabel id="demo-row-radio-buttons-group-label" sx={{marginLeft: '.2rem', marginTop: '.5rem' }}>Purpose of Travel</FormLabel>
-                <RadioGroup
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                    sx={{
-                        '& .MuiSvgIcon-root': {
-                            fontSize: 20,
-                        },
-                    }}
-                >
-
-                    <FormControlLabel value="visit" control={<Radio />} label="Family visit" />
-                    <FormControlLabel value="service" control={<Radio />} label="Service Mission" />
-                    <FormControlLabel value="official" control={<Radio />} label="Official Mission" />
-                    <FormControlLabel value="tourism" control={<Radio />} label="Tourism" />
-                    <FormControlLabel value="business" control={<Radio />} label="Business" />
-
-                    <FormControlLabel value="study" control={<Radio />} label="Study" />
-                    <FormControlLabel value="scientific" control={<Radio />} label="Scientific/Culture/Sport" />
-                    <FormControlLabel value="member" control={<Radio />} label="NGO Menber" />
-                    <FormControlLabel value="journalist" control={<Radio />} label="Journalist" />
-                    <FormControlLabel value="conference" control={<Radio />} label="Religious conference" />
-
-                </RadioGroup>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <Field name='dateOfBirth'>
+                        {({field, form}: {field: any, form: any}) => (
+                            <DatePicker
+                                id='dateOfBirth'
+                                {...field}
+                                selected={field.value}
+                                onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
+                            />
+                        )}
+                    </Field>
+                </LocalizationProvider>
+            </div>
+            <Divider sx={{marginTop: '.5rem', marginBottom: '.5rem'}}/>
+            <Select
+                label="Purpose of travel"
+                fullWidth
+                size='small'
+                value={values.passportType}
+                onChange={handleChange('passportType')}
+                displayEmpty
+                inputProps={{ 'aria-label': 'Purpose of travel' }}
+                sx={{
+                    marginBottom: '.5rem'
+                }}
+            >
+                <MenuItem value="" disabled>
+                    Select Purpose
+                </MenuItem>
+                <MenuItem value="ordinary">Family visit</MenuItem>
+                <MenuItem value="diplomatic">Service mission</MenuItem>
+                <MenuItem value="service">Official mission</MenuItem>
+                <MenuItem value="other">Tourism</MenuItem>
+                <MenuItem value="ordinary">Business</MenuItem>
+                <MenuItem value="diplomatic">Study</MenuItem>
+                <MenuItem value="service">Scientific - Cultural - Sport</MenuItem>
+                <MenuItem value="other">NGO Member</MenuItem>
+                <MenuItem value="service">Journalist</MenuItem>
+                <MenuItem value="other">Conference - Religious</MenuItem>
+            </Select>
+            <TextField
+                name="motherCitizenship"
+                label="Destination in D.R.Congo"
+                variant="outlined"
+                fullWidth
+                value={values.motherCitizenship}
+                onChange={handleChange('motherCitizenship')}
+                size='small'
+            />
+            <div className="group-input">
                 <TextField
-                    name="Ticket Reference"
-                    label="Ticket Reference"
+                    name="mother"
+                    label="Ticket reference"
                     variant="outlined"
                     fullWidth
-                    value={formData.field2}
-                    onChange={handleChange}
+                    value={values.mother}
+                    onChange={handleChange('mother')}
                     size='small'
                 />
                 <TextField
-                    name="Ticket issued"
-                    label="Ticket issued"
+                    name="motherCitizenship"
+                    label="Ticket issued by"
                     variant="outlined"
                     fullWidth
-                    value={formData.field2}
-                    onChange={handleChange}
+                    value={values.motherCitizenship}
+                    onChange={handleChange('motherCitizenship')}
                     size='small'
                 />
-                <TextField
-                    name="Destination in D.R.Congo"
-                    label="Destination in D.R.Congo"
-                    variant="outlined"
-                    fullWidth
-                    value={formData.field2}
-                    onChange={handleChange}
-                    size='small'
-                />
-            </form>
+            </div>
         </div>
     );
 }
+
