@@ -15,25 +15,13 @@ const Transit: React.FC<transit> = ({values, handleChange}) => {
         <h5 style={{marginBottom: '0.2rem'}}>Aller</h5>
     <div className="group-input" style={{marginBottom: '0'}}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <Field name='dateOfBirth'>
+            <Field name='transitGoDate'>
                 {({field, form}: {field: any, form: any}) => (
                     <DatePicker
-                        id='dateOfBirth'
+                        id='transitGoDate'
                         {...field}
                         selected={field.value}
-                        onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
-                    />
-                )}
-            </Field>
-        </LocalizationProvider>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <Field name='dateOfBirth'>
-                {({field, form}: {field: any, form: any}) => (
-                    <DatePicker
-                        id='dateOfBirth'
-                        {...field}
-                        selected={field.value}
-                        onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
+                        onChange={(transitGoDate) => form.setFieldValue(field.name, transitGoDate)}
                     />
                 )}
             </Field>

@@ -45,63 +45,64 @@ export const VisaTwo: React.FC<Step1FormProps> = ({values, handleChange}) => {
                     value={values.name}
                     onChange={handleChange('name')}
                 />
-                <TextField
-                    name="maidenName"
-                    label="Maiden Name"
-                    variant="outlined"
-                    fullWidth
-                    value={values.maidenName}
-                    onChange={handleChange('maidenName')}
-                    size='small'
-                />
+                    <TextField
+                        name="maiden_name"
+                        label="maiden name"
+                        id="maiden_name"
+                        variant="outlined"
+                        fullWidth
+                        size='small'
+                        value={values.maiden_name}
+                        onChange={handleChange('maiden_name')}
+                    />
             </div>
             <div className="group-input">
                 <TextField
-                    name="middleName"
+                    name="middle_name"
                     label="Middle Name"
                     variant="outlined"
                     fullWidth
-                    value={values.middleName}
-                    onChange={handleChange('middleName')}
+                    value={values.middle_name}
+                    onChange={handleChange('middle_name')}
                     size='small'
                 />
                 <TextField
-                    name="firstName"
-                    label="First Names"
+                    name="first_name"
+                    label="First Name"
                     variant="outlined"
                     fullWidth
-                    value={values.firstName}
-                    onChange={handleChange('firstName')}
+                    value={values.first_name}
+                    onChange={handleChange('first_name')}
                     size='small'
                 />
             </div>
             <div className="group-input">
                 <TextField
-                    name="placeOfBirth"
+                    name="place_of_birth"
                     label="Place of Birth"
                     variant="outlined"
                     fullWidth
-                    value={values.placeOfBirth}
-                    onChange={handleChange('placeOfBirth')}
+                    value={values.place_of_birth}
+                    onChange={handleChange('place_of_birth')}
                     size='small'
                 />
                 <TextField
-                    name="countryOfBirth"
-                    label="Country of Birth"
+                    name="country_of_birth"
+                    label="Country of birth"
                     variant="outlined"
                     fullWidth
-                    value={values.countryOfBirth}
-                    onChange={handleChange('countryOfBirth')}
+                    value={values.country_of_birth}
+                    onChange={handleChange('country_of_birth')}
                     size='small'
                 />
             </div>
             <TextField
-                name="citizenshipAtBirth"
+                name="citizenship_at_birth"
                 label="Nationality at Birth"
                 variant="outlined"
                 fullWidth
-                value={values.citizenshipAtBirth}
-                onChange={handleChange('citizenshipAtBirth')}
+                value={values.citizenship_at_birth}
+                onChange={handleChange('citizenship_at_birth')}
                 size='small'
             />
             <div className="group-input" style={{marginBottom: '.5rem'}}>
@@ -116,13 +117,13 @@ export const VisaTwo: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 />
 
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <Field name='dateOfBirth'>
+                <Field name='date_of_birth'>
                     {({field, form}: {field: any, form: any}) => (
                         <DatePicker
                         id='dateOfBirth'
                         {...field}
                             selected={field.value}
-                        onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
+                        onChange={(date_of_birth) => form.setFieldValue(field.name, date_of_birth)}
                         />
                     )}
                 </Field>
@@ -131,12 +132,12 @@ export const VisaTwo: React.FC<Step1FormProps> = ({values, handleChange}) => {
 
             <TextField
                 sx={{marginBottom: '.5rem'}}
-                name="spouseName"
+                name="spouse_name"
                 label="Spouse's name"
                 variant="outlined"
                 fullWidth
-                value={values.spouseName}
-                onChange={handleChange('spouseName')}
+                value={values.spouse_name}
+                onChange={handleChange('spouse_name')}
                 size='small'
             />
 
@@ -170,8 +171,8 @@ export const VisaTwo: React.FC<Step1FormProps> = ({values, handleChange}) => {
                         fontSize: 20,
                     },
                 }}
-                value={values.maritalStatus}
-                onChange={handleChange('maritalStatus')}
+                value={values.marital_status}
+                onChange={handleChange('marital_status')}
             >
                 <FormControlLabel value="single" control={<Radio/>} label="Single"/>
                 <FormControlLabel value="married" control={<Radio/>} label="Married"/>

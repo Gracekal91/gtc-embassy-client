@@ -129,3 +129,11 @@ export const UpdateStatus = async (id: any, value: any) => {
     }
 }
 
+export const createVisa = async (data: any) =>{
+    try{
+        const response = await api.post(`/auth/login`, {data})
+    }catch (e) {
+        throw e;
+    }
+}
+

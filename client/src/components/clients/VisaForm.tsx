@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {VisaOne} from "./VisaOne";
 import {VisaTwo} from "./VisaTwo";
 import embleme from "../../assests/images/embleme.png";
@@ -11,6 +11,7 @@ import MyStepper from '../shared/MyStepper'
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import * as yup from 'yup';
 import { VisaFour } from "./VisaFour";
+import axios from 'axios'
 
 //validation
 const valideSchema = yup.object({
@@ -24,34 +25,10 @@ const valideSchema = yup.object({
         .required('Password is required')
 });
 
-interface Values {
-    name: string;
-    maidenName: string;
-    middleName: string;
-    firstName: string;
-    placeOfBirth: any;
-    countryOfBirth: string;
-    citizenshipAtBirth: string;
-    citizenship: string;
-    dateOfBirth: any;
-    spouseName: string;
-    gender: any;
-    maritalStatus: any;
-    profession: string
-    residence: string
-    otherResidence: string
-    phoneNumber: any
-    father: any
-    fatherCitizenship: any
-    mother: any
-    motherCitizenship: any
-    passportType: any
-    TravelDocumentNumber: any
-    visaType: any
-}
 
 export const VisaForm = () => {
     const [currentStep, setCurrentStep] = useState(1);
+    const [dataToSubmit, setDataToSubmit] = useState();
 
     const handleNextStep = () => {
         setCurrentStep(currentStep + 1);
@@ -61,9 +38,29 @@ export const VisaForm = () => {
         setCurrentStep(currentStep - 1);
     };
 
-    const submitMe = (values: any) => {
-        console.log('VALUES', values)
+    // useEffect(() => {
+    //     const createVisa = async (dataToSubmit: any) => {
+    //         try {
+    //             const response = await axios.post('http://localhost:3500/api/v1/create_visa', dataToSubmit);
+    //             // Handle the response here
+    //             return response
+    //         } catch (error) {
+    //             // Handle any errors
+    //         }
+    //     }
+    //
+    // }, []);
+
+    const submitMe =  async (values: any) => {
+        console.log('VALUES', values);
+        try {
+            const response  = await axios.post('http://localhost:3500/api/v1/create_visa', values);
+            console.log(response)
+        } catch (error) {
+            console.log('failed to submit data')
+        }
     }
+
 
     // @ts-ignore
     return(
@@ -81,20 +78,44 @@ export const VisaForm = () => {
                 <Formik
                     initialValues={{
                         name: '',
-                        maidenName: '',
-                        middleName: '',
-                        firstName: '',
-                        placeOfBirth: '',
-                        countryOfBirth: '',
-                        citizenshipAtBirth: '',
+                        maiden_name: '',
+                        middle_name: '',
+                        first_name: '',
+                        place_of_birth: '',
+                        country_of_birth: '',
+                        citizenship_at_birth: '',
                         citizenship: '',
-                        dateOfBirth: null,
-                        spouseName: '',
+                        date_of_birth: '',
+                        spouse_name: '',
                         gender: '',
-                        maritalStatus: '',
-                        visaType: ''
+                        marital_status: '',
+                        profession: '',
+                        residence_address: '',
+                        other_residence: '',
+                        email_address: '',
+                        phone_number: '',
+                        father_name: '',
+                        father_citizenship: '',
+                        mother_name: '',
+                        mother_citizenship: '',
+                        passport_type: '',
+                        travel_document_number: '',
+                        visa_type: '',
+                        travel_document_issued_by: '',
+                        residency_permit_number: '',
+                        residency_permit_expiration: '',
+                        purpose_of_travel: '',
+                        destination_in_congo: '',
+                        ticket_reference: '',
+                        ticket_issued_by: '',
+                        last_visa_number: '',
+                        last_visa_duration: '',
+                        last_visa_deliverance_date: '',
+                        host_names: '',
+                        host_number: '',
+                        host_address: ''
                     }}
-                    //validationSchema={valideSchema} TODO
+
                     onSubmit={values => submitMe(values)}
                 >
                     {({

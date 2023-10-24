@@ -37,19 +37,19 @@ export const VisaFour: React.FC<Step1FormProps> = ({values, handleChange}) => {
         <div>
             <h5>Step 4 - ACCESS TO THE CONGOLESE TERRITORY</h5>
             <Select
-                label="Purpose of travel"
+                label="Visa Type"
                 fullWidth
                 size='small'
-                value={values.visaType}
-                onChange={handleChange('visaType')}
+                value={values.visa_type}
+                onChange={handleChange('visa_type')}
                 displayEmpty
-                inputProps={{ 'aria-label': 'Purpose of travel' }}
+                inputProps={{ 'aria-label': 'Visa type' }}
                 sx={{
                     marginBottom: '.5rem'
                 }}
             >
                 <MenuItem value="" disabled>
-                    Select Purpose
+                    Select visa type
                 </MenuItem>
                 <MenuItem value="transit">Transit</MenuItem>
                 <MenuItem value="single">Single access point</MenuItem>
@@ -73,6 +73,75 @@ export const VisaFour: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 values.visaType === 'multiple' &&  <Multiple />
             }
 
+            <h5>Last visa obtained in D.R.Congo</h5>
+            <div className="group-input">
+                <TextField
+                    name="LastVisaNumber"
+                    label="Last Visa No"
+                    id="lastVisaNumber"
+                    variant="outlined"
+                    fullWidth
+                    size='small'
+                    value={values.LastVisaNumber}
+                    onChange={handleChange('LastVisaNumber')}
+                />
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <Field name='LastVisaDeliveranceDate'>
+                        {({field, form}: {field: any, form: any}) => (
+                            <DatePicker
+                                id='LastVisaDeliveranceDate'
+                                {...field}
+                                selected={field.value}
+                                onChange={(LastVisaDeliveranceDate) => form.setFieldValue(field.name, LastVisaDeliveranceDate)}
+                            />
+                        )}
+                    </Field>
+                </LocalizationProvider>
+            </div>
+            <TextField
+                name="LastVisaDuration"
+                label="Last visa duration"
+                variant="outlined"
+                fullWidth
+                value={values.LastVisaDuration}
+                onChange={handleChange('LastVisaDuration')}
+                size='small'
+            />
+
+            <h5>Host or Sponsor Details</h5>
+            <div className="group-input">
+                <TextField
+                    name="hostNames"
+                    label="Host / sponsor full name"
+                    id="hostNames"
+                    variant="outlined"
+                    fullWidth
+                    size='small'
+                    value={values.hostNames}
+                    onChange={handleChange('hostNames')}
+                />
+
+                <TextField
+                    name="hostNumber"
+                    label="Cellphone No"
+                    id="hostNumber"
+                    variant="outlined"
+                    fullWidth
+                    size='small'
+                    value={values.hostNumber}
+                    onChange={handleChange('hostNumber')}
+                />
+            </div>
+            <TextField
+                name="hostAddress"
+                label="sponsor's address"
+                id="hostAddress"
+                variant="outlined"
+                fullWidth
+                size='small'
+                value={values.hostAddress}
+                onChange={handleChange('hostAddress')}
+            />
         </div>
     );
 }
