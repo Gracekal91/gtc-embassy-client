@@ -9,9 +9,21 @@ import StatCard from "../../components/cards/StatCard";
 import LineChart from "../../components/charts/LineChart";
 import GeoChart from "../../components/charts/GeoChart";
 import { useMediaQuery } from '@mui/material';
+import {useGetData} from "../../hooks/useGetData";
+
 
 
 export const DashboardEm = () => {
+
+
+    const {data, loading, error} = useGetData();
+    if(error || !data) console.log('error while fetching data')
+    if(loading) console.log('Loading data')
+    // @ts-ignore
+    let visaApplications = data?.length
+    console.log('>>>>>>>>', data)
+
+
     const isMobile = useMediaQuery('(max-width:960px)');
 
     return(
@@ -40,8 +52,8 @@ export const DashboardEm = () => {
                             }}
                         >
                             <StatCard
-                                title="12,361"
-                                subtitle="Emails Sent"
+                                title={visaApplications}
+                                subtitle="Visa Applications"
                                 increase="+14%"
                                 icon={
                                     <EmailIcon
@@ -63,7 +75,7 @@ export const DashboardEm = () => {
                         >
                             <StatCard
                                 title="12,361"
-                                subtitle="Emails Sent"
+                                subtitle="Traveling document"
                                 increase="+14%"
                                 icon={
                                     <EmailIcon
@@ -84,8 +96,8 @@ export const DashboardEm = () => {
                             }}
                         >
                             <StatCard
-                                title="12,361"
-                                subtitle="Emails Sent"
+                                title="61"
+                                subtitle="Completed"
                                 increase="+14%"
                                 icon={
                                     <EmailIcon
@@ -106,7 +118,7 @@ export const DashboardEm = () => {
                         >
                             <StatCard
                                 title="161"
-                                subtitle="Emails Sent"
+                                subtitle="Pending"
                                 increase="+49%"
                                 icon={
                                     <EmailIcon
@@ -139,7 +151,7 @@ export const DashboardEm = () => {
                                     color={theme.grey["grey100"]}
                                     sx={{fontSize: '.9rem'}}
                                 >
-                                    Revenue Generated
+                                    Total Number of Applications
                                 </Typography>
                                 <Typography
                                     variant="h3"
@@ -149,7 +161,7 @@ export const DashboardEm = () => {
                                         fontSize: '1.5rem'
                                     }}
                                 >
-                                    $59,342.32
+                                    23,987
                                 </Typography>
                             </Box>
                             <Box>
@@ -161,13 +173,9 @@ export const DashboardEm = () => {
                             </Box>
                         </Box>
                         <Box height="250px" m="-20px 0 0 0">
-                            <LineChart isDashboard={true} />
+                            <LineChart myData={data}/>
                         </Box>
-
-
                         {/*Geography*/}
-
-
                     </Box>
                     <Box
                         sx={{
@@ -188,7 +196,7 @@ export const DashboardEm = () => {
                             <GeoChart isDashboard={true} />
                         </Box>
                     </Box>
-</div>
+                    </div>
                 </main>
             </div>
         </>

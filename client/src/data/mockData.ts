@@ -430,171 +430,152 @@ export const mockPieData = [
         color: "hsl(344, 70%, 50%)",
     },
 ];
+interface Mock{
+    country?: string;
+    "Travel Doc"?: number;
+    "TravelDocColor"?: string;
+    "Marriage Cert"?: number;
+    "MarriageCertColor"?: string;
+    "Driving L"?: number;
+    "DrivingColor"?: string;
+    "Visa"?: number;
+    "VisaColor"?: string;
+}
 
 export const mockLineData = [
     {
-        id: "japan",
-        color: dark,
-        data: [
-            {
-                x: "plane",
-                y: 101,
-            },
-            {
-                x: "helicopter",
-                y: 75,
-            },
-            {
-                x: "boat",
-                y: 36,
-            },
-            {
-                x: "train",
-                y: 216,
-            },
-            {
-                x: "subway",
-                y: 35,
-            },
-            {
-                x: "bus",
-                y: 236,
-            },
-            {
-                x: "car",
-                y: 88,
-            },
-            {
-                x: "moto",
-                y: 232,
-            },
-            {
-                x: "bicycle",
-                y: 281,
-            },
-            {
-                x: "horse",
-                y: 1,
-            },
-            {
-                x: "skateboard",
-                y: 35,
-            },
-            {
-                x: "others",
-                y: 14,
-            },
-        ],
+        "country": "Jan",
+        "Travel Doc": 11,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 18,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 13,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 16,
+        "VisaColor": "hsl(170, 70%, 50%)"
     },
     {
-        id: "france",
-        color: 'red',
-        data: [
-            {
-                x: "plane",
-                y: 212,
-            },
-            {
-                x: "helicopter",
-                y: 190,
-            },
-            {
-                x: "boat",
-                y: 270,
-            },
-            {
-                x: "train",
-                y: 9,
-            },
-            {
-                x: "subway",
-                y: 75,
-            },
-            {
-                x: "bus",
-                y: 175,
-            },
-            {
-                x: "car",
-                y: 33,
-            },
-            {
-                x: "moto",
-                y: 189,
-            },
-            {
-                x: "bicycle",
-                y: 97,
-            },
-            {
-                x: "horse",
-                y: 87,
-            },
-            {
-                x: "skateboard",
-                y: 299,
-            },
-            {
-                x: "others",
-                y: 251,
-            },
-        ],
+        "country": "Feb",
+        "Travel Doc": 11,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 18,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 13,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 16,
+        "VisaColor": "hsl(170, 70%, 50%)"
     },
     {
-        id: "us",
-        color: 'blue',
-        data: [
-            {
-                x: "plane",
-                y: 191,
-            },
-            {
-                x: "helicopter",
-                y: 136,
-            },
-            {
-                x: "boat",
-                y: 91,
-            },
-            {
-                x: "train",
-                y: 190,
-            },
-            {
-                x: "subway",
-                y: 211,
-            },
-            {
-                x: "bus",
-                y: 152,
-            },
-            {
-                x: "car",
-                y: 189,
-            },
-            {
-                x: "moto",
-                y: 152,
-            },
-            {
-                x: "bicycle",
-                y: 8,
-            },
-            {
-                x: "horse",
-                y: 197,
-            },
-            {
-                x: "skateboard",
-                y: 107,
-            },
-            {
-                x: "others",
-                y: 170,
-            },
-        ],
+        "country": "Mar",
+        "Travel Doc": 0,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 0,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 0,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 0,
+        "VisaColor": "hsl(170, 70%, 50%)"
     },
-];
+    {
+        "country": "Apr",
+        "Travel Doc": 0,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 0,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 0,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 0,
+        "VisaColor": "hsl(170, 70%, 50%)"
+    },
+    {
+        "country": "May",
+        "Travel Doc": 0,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 0,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 0,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 0,
+        "VisaColor": "hsl(170, 70%, 50%)"
+    },
+    {
+        "country": "Jun",
+        "Travel Doc": 0,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 0,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 0,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 0,
+        "VisaColor": "hsl(170, 70%, 50%)"
+    },
+    {
+        "country": "Jul",
+        "Travel Doc": 0,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 0,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 0,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 0,
+        "VisaColor": "hsl(170, 70%, 50%)"
+    },
+    {
+        "country": "Aug",
+        "Travel Doc": 0,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 0,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 0,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 0,
+        "VisaColor": "hsl(170, 70%, 50%)"
+    },
+    {
+        "country": "Sep",
+        "Travel Doc": 0,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 0,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 0,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 0,
+        "VisaColor": "hsl(170, 70%, 50%)"
+    },
+    {
+        "country": "Oct",
+        "Travel Doc": 0,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 0,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 0,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 0,
+        "VisaColor": "hsl(170, 70%, 50%)"
+    },
+    {
+        "country": "Nov",
+        "Travel Doc": 0,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 0,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 0,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 0,
+        "VisaColor": "hsl(170, 70%, 50%)"
+    },
+    {
+        "country": "Dec",
+        "Travel Doc": 0,
+        "TravelDocColor": "hsl(33, 70%, 50%)",
+        "Marriage Cert": 0,
+        "MarriageCertColor": "hsl(181, 70%, 50%)",
+        "Driving L": 0,
+        "DrivingColor": "hsl(338, 70%, 50%)",
+        "Visa": 0,
+        "VisaColor": "hsl(170, 70%, 50%)"
+    }
+]
 
 export const mockGeographyData = [
     {
@@ -747,7 +728,7 @@ export const mockGeographyData = [
     },
     {
         id: "CZE",
-        value: 500109,
+        value: 9,
     },
     {
         id: "DEU",
@@ -1115,7 +1096,7 @@ export const mockGeographyData = [
     },
     {
         id: "RWA",
-        value: 136781,
+        value: 13678157684876,
     },
     {
         id: "ESH",
@@ -1239,7 +1220,7 @@ export const mockGeographyData = [
     },
     {
         id: "USA",
-        value: 658725,
+        value: 5,
     },
     {
         id: "UZB",

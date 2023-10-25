@@ -44,173 +44,148 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                     onChange={handleChange('profession')}
                 />
                 <TextField
-                    name="residence"
+                    name="residence_address"
                     label="Principal Residence"
                     variant="outlined"
                     fullWidth
-                    value={values.residence}
-                    onChange={handleChange('residence')}
+                    value={values.residence_address}
+                    onChange={handleChange('residence_address')}
                     size='small'
                 />
             </div>
             <div className="group-input">
                 <TextField
-                    name="phoneNumber"
+                    name="phone_number"
                     label="Phone Number"
                     variant="outlined"
                     fullWidth
-                    value={values.phoneNumber}
-                    onChange={handleChange('phoneNumber')}
+                    value={values.phone_number}
+                    onChange={handleChange('phone_number')}
                     size='small'
                 />
                 <TextField
-                    name="otherResidence"
+                    name="other_residence"
                     label="Other residence"
                     variant="outlined"
                     fullWidth
-                    value={values.otherResidence}
-                    onChange={handleChange('otherResidence')}
+                    value={values.other_residence}
+                    onChange={handleChange('other_residence')}
                     size='small'
                 />
             </div>
                 <TextField
-                    name="email"
+                    name="email_address"
                     label="Email address"
                     variant="outlined"
                     fullWidth
-                    value={values.email}
-                    onChange={handleChange('email')}
+                    value={values.email_address}
+                    onChange={handleChange('email_address')}
                     size='small'
                 />
 
-            {/*<div className="group-input" style={{marginBottom: '.5rem'}}>*/}
-            {/*    <TextField*/}
-            {/*        name="citizenship"*/}
-            {/*        label="Citizenship"*/}
-            {/*        variant="outlined"*/}
-            {/*        fullWidth*/}
-            {/*        value={values.citizenship}*/}
-            {/*        onChange={handleChange('citizenship')}*/}
-            {/*        size='small'*/}
-            {/*    />*/}
-
-            {/*    <LocalizationProvider dateAdapter={AdapterDateFns}>*/}
-            {/*        <Field name='dateOfBirth'>*/}
-            {/*            {({field, form}: {field: any, form: any}) => (*/}
-            {/*                <DatePicker*/}
-            {/*                    id='dateOfBirth'*/}
-            {/*                    {...field}*/}
-            {/*                    selected={field.value}*/}
-            {/*                    onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}*/}
-            {/*                />*/}
-            {/*            )}*/}
-            {/*        </Field>*/}
-            {/*    </LocalizationProvider>*/}
-            {/*</div>*/}
-
             <div className="group-input">
                 <TextField
-                    name="father"
+                    name="father_name"
                     label="Father's name"
                     variant="outlined"
                     fullWidth
-                    value={values.father}
-                    onChange={handleChange('father')}
+                    value={values.father_name}
+                    onChange={handleChange('father_name')}
                     size='small'
                 />
                 <TextField
-                    name="fatherCitizenship"
+                    name="father_citizenship"
                     label="Father's Nationality"
                     variant="outlined"
                     fullWidth
-                    value={values.fatherCitizenship}
-                    onChange={handleChange('fatherCitizenship')}
+                    value={values.father_citizenship}
+                    onChange={handleChange('father_citizenship')}
                     size='small'
                 />
             </div>
 
             <div className="group-input">
                 <TextField
-                    name="mother"
+                    name="mother_name"
                     label="Mother's name"
                     variant="outlined"
                     fullWidth
-                    value={values.mother}
-                    onChange={handleChange('mother')}
+                    value={values.mother_name}
+                    onChange={handleChange('mother_name')}
                     size='small'
                 />
                 <TextField
-                    name="motherCitizenship"
+                    name="mother_citizenship"
                     label="Mother's Nationality"
                     variant="outlined"
                     fullWidth
-                    value={values.motherCitizenship}
-                    onChange={handleChange('motherCitizenship')}
+                    value={values.mother_citizenship}
+                    onChange={handleChange('mother_citizenship')}
                     size='small'
                 />
             </div>
             <TextField
-                name="citizenshipAtBirth"
+                name="travel_document_number"
                 label="Travelling Document. Nbr"
                 variant="outlined"
                 fullWidth
-                value={values.citizenshipAtBirth}
-                onChange={handleChange('citizenshipAtBirth')}
+                value={values.travel_document_number}
+                onChange={handleChange('travel_document_number')}
                 size='small'
             />
-            <div className="group-input" style={{marginBottom: '.5rem'}}>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <Field name='dateOfBirth'>
-                                {({field, form}: {field: any, form: any}) => (
-                                    <DatePicker
-                                        id='dateOfBirth'
-                                        {...field}
-                                        selected={field.value}
-                                        onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
-                                    />
-                                )}
-                            </Field>
-                        </LocalizationProvider>
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <Field name='dateOfBirth'>
-                                    {({field, form}: {field: any, form: any}) => (
-                                        <DatePicker
-                                            id='dateOfBirth'
-                                            {...field}
-                                            selected={field.value}
-                                            onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
-                                        />
-                                    )}
-                                </Field>
-                            </LocalizationProvider>
-            </div>
+            {/*<div className="group-input" style={{marginBottom: '.5rem'}}>*/}
+            {/*    <LocalizationProvider dateAdapter={AdapterDateFns}>*/}
+            {/*                <Field name='dateOfBirth'>*/}
+            {/*                    {({field, form}: {field: any, form: any}) => (*/}
+            {/*                        <DatePicker*/}
+            {/*                            id='dateOfBirth'*/}
+            {/*                            {...field}*/}
+            {/*                            selected={field.value}*/}
+            {/*                            onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}*/}
+            {/*                        />*/}
+            {/*                    )}*/}
+            {/*                </Field>*/}
+            {/*            </LocalizationProvider>*/}
+            {/*        <LocalizationProvider dateAdapter={AdapterDateFns}>*/}
+            {/*                    <Field name='dateOfBirth'>*/}
+            {/*                        {({field, form}: {field: any, form: any}) => (*/}
+            {/*                            <DatePicker*/}
+            {/*                                id='dateOfBirth'*/}
+            {/*                                {...field}*/}
+            {/*                                selected={field.value}*/}
+            {/*                                onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}*/}
+            {/*                            />*/}
+            {/*                        )}*/}
+            {/*                    </Field>*/}
+            {/*        </LocalizationProvider>*/}
+            {/*</div>*/}
             <TextField
-                name="mother"
+                name="TdIssuedBy"
                 label="Issued by"
                 variant="outlined"
                 fullWidth
-                value={values.mother}
-                onChange={handleChange('mother')}
+                value={values.TdIssuedBy}
+                onChange={handleChange('TdIssuedBy')}
                 size='small'
             />
             <div className="group-input">
                 <TextField
-                    name="mother"
-                    label="Residence permit number"
+                    name="residency_permit_number"
+                    label="Residency permit number"
                     variant="outlined"
                     fullWidth
-                    value={values.mother}
-                    onChange={handleChange('mother')}
+                    value={values.residency_permit_number}
+                    onChange={handleChange('residency_permit_number')}
                     size='small'
                 />
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <Field name='dateOfBirth'>
+                    <Field name='residency_permit_expiration'>
                         {({field, form}: {field: any, form: any}) => (
                             <DatePicker
-                                id='dateOfBirth'
+                                id='residency_permit_expiration'
                                 {...field}
                                 selected={field.value}
-                                onChange={(dateOfBirth) => form.setFieldValue(field.name, dateOfBirth)}
+                                onChange={(residency_permit_expiration) => form.setFieldValue(field.name, residency_permit_expiration)}
                             />
                         )}
                     </Field>
@@ -221,8 +196,8 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 label="Purpose of travel"
                 fullWidth
                 size='small'
-                value={values.passportType}
-                onChange={handleChange('passportType')}
+                value={values.purpose_of_travel}
+                onChange={handleChange('purpose_of_travel')}
                 displayEmpty
                 inputProps={{ 'aria-label': 'Purpose of travel' }}
                 sx={{
@@ -230,45 +205,45 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 }}
             >
                 <MenuItem value="" disabled>
-                    Select Purpose
+                    Select Purpose of travel
                 </MenuItem>
-                <MenuItem value="ordinary">Family visit</MenuItem>
-                <MenuItem value="diplomatic">Service mission</MenuItem>
-                <MenuItem value="service">Official mission</MenuItem>
-                <MenuItem value="other">Tourism</MenuItem>
-                <MenuItem value="ordinary">Business</MenuItem>
-                <MenuItem value="diplomatic">Study</MenuItem>
-                <MenuItem value="service">Scientific - Cultural - Sport</MenuItem>
-                <MenuItem value="other">NGO Member</MenuItem>
-                <MenuItem value="service">Journalist</MenuItem>
-                <MenuItem value="other">Conference - Religious</MenuItem>
+                <MenuItem value="visit family">Family visit</MenuItem>
+                <MenuItem value="service mission">Service mission</MenuItem>
+                <MenuItem value="official mission">Official mission</MenuItem>
+                <MenuItem value="Tourism">Tourism</MenuItem>
+                <MenuItem value="business">Business</MenuItem>
+                <MenuItem value="study">Study</MenuItem>
+                <MenuItem value="scientific/culture/sport">Scientific - Cultural - Sport</MenuItem>
+                <MenuItem value="ngo">NGO Member</MenuItem>
+                <MenuItem value="Journalist">Journalist</MenuItem>
+                <MenuItem value="conference">Conference - Religious</MenuItem>
             </Select>
             <TextField
-                name="motherCitizenship"
+                name="destination_in_congo"
                 label="Destination in D.R.Congo"
                 variant="outlined"
                 fullWidth
-                value={values.motherCitizenship}
-                onChange={handleChange('motherCitizenship')}
+                value={values.destination_in_congo}
+                onChange={handleChange('destination_in_congo')}
                 size='small'
             />
             <div className="group-input">
                 <TextField
-                    name="mother"
+                    name="ticketReference"
                     label="Ticket reference"
                     variant="outlined"
                     fullWidth
-                    value={values.mother}
-                    onChange={handleChange('mother')}
+                    value={values.ticket_reference}
+                    onChange={handleChange('ticket_reference')}
                     size='small'
                 />
                 <TextField
-                    name="motherCitizenship"
+                    name="ticket_issued_by"
                     label="Ticket issued by"
                     variant="outlined"
                     fullWidth
-                    value={values.motherCitizenship}
-                    onChange={handleChange('motherCitizenship')}
+                    value={values.ticket_issued_by}
+                    onChange={handleChange('ticket_issued_by')}
                     size='small'
                 />
             </div>
