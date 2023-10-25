@@ -11,6 +11,7 @@ import { DatePicker } from '@mui/x-date-pickers';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import styled from "styled-components";
 import { Field } from 'formik';
+import {CountrySelect} from "./partials/CountrySelect";
 
 
 interface Step1FormProps {
@@ -47,7 +48,7 @@ export const VisaTwo: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 />
                     <TextField
                         name="maiden_name"
-                        label="maiden name"
+                        label="Maiden name"
                         id="maiden_name"
                         variant="outlined"
                         fullWidth
@@ -77,6 +78,16 @@ export const VisaTwo: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 />
             </div>
             <div className="group-input">
+                {/*<TextField*/}
+                {/*    name="country_of_birth"*/}
+                {/*    label="Country of birth"*/}
+                {/*    variant="outlined"*/}
+                {/*    fullWidth*/}
+                {/*    value={values.country_of_birth}*/}
+                {/*    onChange={handleChange('country_of_birth')}*/}
+                {/*    size='small'*/}
+                {/*/>*/}
+                <CountrySelect handleChange={handleChange} values={values}/>
                 <TextField
                     name="place_of_birth"
                     label="Place of Birth"
@@ -84,15 +95,6 @@ export const VisaTwo: React.FC<Step1FormProps> = ({values, handleChange}) => {
                     fullWidth
                     value={values.place_of_birth}
                     onChange={handleChange('place_of_birth')}
-                    size='small'
-                />
-                <TextField
-                    name="country_of_birth"
-                    label="Country of birth"
-                    variant="outlined"
-                    fullWidth
-                    value={values.country_of_birth}
-                    onChange={handleChange('country_of_birth')}
                     size='small'
                 />
             </div>

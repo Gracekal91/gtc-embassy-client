@@ -31,8 +31,7 @@ const DatePickerWrapper = styled.div`
 `;
 
 export const VisaFour: React.FC<Step1FormProps> = ({values, handleChange}) => {
-    const [visaEntry, setVisaEntry] = useState('');
-    // @ts-ignore
+
     return (
         <div>
             <h5>Step 4 - ACCESS TO THE CONGOLESE TERRITORY</h5>
@@ -58,19 +57,19 @@ export const VisaFour: React.FC<Step1FormProps> = ({values, handleChange}) => {
             </Select>
 
             {
-                values.visaType === 'transit' &&  <Transit values={values} handleChange={handleChange} />
+                values.visa_type === 'transit' &&  <Transit values={values} handleChange={handleChange} />
             }
 
             {
-                values.visaType === 'single' &&  <Single values={values} handleChange={handleChange}/>
+                values.visa_type === 'single' &&  <Single values={values} handleChange={handleChange}/>
             }
 
             {
-                values.visaType === 'double' &&  <Double />
+                values.visa_type === 'double' &&  <Double />
             }
 
             {
-                values.visaType === 'multiple' &&  <Multiple />
+                values.visa_type === 'multiple' &&  <Multiple />
             }
 
             <h5>Last visa obtained in D.R.Congo</h5>
@@ -82,8 +81,8 @@ export const VisaFour: React.FC<Step1FormProps> = ({values, handleChange}) => {
                     variant="outlined"
                     fullWidth
                     size='small'
-                    value={values.LastVisaNumber}
-                    onChange={handleChange('LastVisaNumber')}
+                    value={values.last_visa_number}
+                    onChange={handleChange('last_visa_number')}
                 />
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <Field name='LastVisaDeliveranceDate'>
@@ -99,48 +98,48 @@ export const VisaFour: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 </LocalizationProvider>
             </div>
             <TextField
-                name="LastVisaDuration"
+                name="last_visa_duration"
                 label="Last visa duration"
                 variant="outlined"
                 fullWidth
-                value={values.LastVisaDuration}
-                onChange={handleChange('LastVisaDuration')}
+                value={values.last_visa_duration}
+                onChange={handleChange('last_visa_duration')}
                 size='small'
             />
 
             <h5>Host or Sponsor Details</h5>
             <div className="group-input">
                 <TextField
-                    name="hostNames"
+                    name="host_names"
                     label="Host / sponsor full name"
                     id="hostNames"
                     variant="outlined"
                     fullWidth
                     size='small'
-                    value={values.hostNames}
-                    onChange={handleChange('hostNames')}
+                    value={values.host_names}
+                    onChange={handleChange('host_names')}
                 />
 
                 <TextField
-                    name="hostNumber"
+                    name="host_number"
                     label="Cellphone No"
                     id="hostNumber"
                     variant="outlined"
                     fullWidth
                     size='small'
-                    value={values.hostNumber}
-                    onChange={handleChange('hostNumber')}
+                    value={values.host_number}
+                    onChange={handleChange('host_number')}
                 />
             </div>
             <TextField
-                name="hostAddress"
+                name="host_address"
                 label="sponsor's address"
-                id="hostAddress"
+                id="host_address"
                 variant="outlined"
                 fullWidth
                 size='small'
-                value={values.hostAddress}
-                onChange={handleChange('hostAddress')}
+                value={values.host_address}
+                onChange={handleChange('host_address')}
             />
         </div>
     );
