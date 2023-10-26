@@ -89,6 +89,7 @@ export const VisaFour: React.FC<Step1FormProps> = ({values, handleChange}) => {
                         {({field, form}: {field: any, form: any}) => (
                             <DatePicker
                                 id='LastVisaDeliveranceDate'
+                                label='Exp. date'
                                 {...field}
                                 selected={field.value}
                                 onChange={(LastVisaDeliveranceDate) => form.setFieldValue(field.name, LastVisaDeliveranceDate)}

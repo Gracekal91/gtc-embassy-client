@@ -81,7 +81,7 @@ export const VisaForm = () => {
                         maiden_name: '',
                         middle_name: '',
                         first_name: '',
-                        place_of_birth: '',
+                        city_of_birth: '',
                         country_of_birth: '',
                         citizenship_at_birth: '',
                         citizenship: '',

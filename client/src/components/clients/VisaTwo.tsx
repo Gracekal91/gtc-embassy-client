@@ -12,6 +12,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import styled from "styled-components";
 import { Field } from 'formik';
 import {CountrySelect} from "./partials/CountrySelect";
+import { CitySelect } from './partials/CitySelect';
 
 
 interface Step1FormProps {
@@ -78,25 +79,8 @@ export const VisaTwo: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 />
             </div>
             <div className="group-input">
-                {/*<TextField*/}
-                {/*    name="country_of_birth"*/}
-                {/*    label="Country of birth"*/}
-                {/*    variant="outlined"*/}
-                {/*    fullWidth*/}
-                {/*    value={values.country_of_birth}*/}
-                {/*    onChange={handleChange('country_of_birth')}*/}
-                {/*    size='small'*/}
-                {/*/>*/}
                 <CountrySelect handleChange={handleChange} values={values}/>
-                <TextField
-                    name="place_of_birth"
-                    label="Place of Birth"
-                    variant="outlined"
-                    fullWidth
-                    value={values.place_of_birth}
-                    onChange={handleChange('place_of_birth')}
-                    size='small'
-                />
+                <CitySelect handleChange={handleChange} values={values}/>
             </div>
             <TextField
                 name="citizenship_at_birth"
@@ -122,7 +106,8 @@ export const VisaTwo: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 <Field name='date_of_birth'>
                     {({field, form}: {field: any, form: any}) => (
                         <DatePicker
-                        id='dateOfBirth'
+                            label="date of birth"
+                        id='date_of_birth'
                         {...field}
                             selected={field.value}
                         onChange={(date_of_birth) => form.setFieldValue(field.name, date_of_birth)}
