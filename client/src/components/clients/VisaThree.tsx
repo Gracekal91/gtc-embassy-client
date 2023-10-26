@@ -183,6 +183,7 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                         {({field, form}: {field: any, form: any}) => (
                             <DatePicker
                                 id='residency_permit_expiration'
+                                label='permit expires'
                                 {...field}
                                 selected={field.value}
                                 onChange={(residency_permit_expiration) => form.setFieldValue(field.name, residency_permit_expiration)}
@@ -191,7 +192,7 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                     </Field>
                 </LocalizationProvider>
             </div>
-            <Divider sx={{marginTop: '.5rem', marginBottom: '.5rem'}}/>
+            <Divider sx={{ marginTop: '.5rem', marginBottom: '.5rem'}}/>
             <Select
                 label="Purpose of travel"
                 fullWidth
@@ -201,22 +202,23 @@ export const VisaThree: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 displayEmpty
                 inputProps={{ 'aria-label': 'Purpose of travel' }}
                 sx={{
-                    marginBottom: '.5rem'
+                    marginBottom: '.5rem',
+                    fontSize:'.8rem'
                 }}
             >
-                <MenuItem value="" disabled>
+                <MenuItem value="" disabled sx={{fontSize: '.7rem'}}>
                     Select Purpose of travel
                 </MenuItem>
-                <MenuItem value="visit family">Family visit</MenuItem>
-                <MenuItem value="service mission">Service mission</MenuItem>
-                <MenuItem value="official mission">Official mission</MenuItem>
-                <MenuItem value="Tourism">Tourism</MenuItem>
-                <MenuItem value="business">Business</MenuItem>
-                <MenuItem value="study">Study</MenuItem>
-                <MenuItem value="scientific/culture/sport">Scientific - Cultural - Sport</MenuItem>
-                <MenuItem value="ngo">NGO Member</MenuItem>
-                <MenuItem value="Journalist">Journalist</MenuItem>
-                <MenuItem value="conference">Conference - Religious</MenuItem>
+                <MenuItem value="visit family"  sx={{fontSize: '.7rem'}}>Family visit</MenuItem>
+                <MenuItem value="service mission"  sx={{fontSize: '.7rem'}}>Service mission</MenuItem>
+                <MenuItem value="official mission"  sx={{fontSize: '.7rem'}}>Official mission</MenuItem>
+                <MenuItem value="Tourism"  sx={{fontSize: '.7rem'}}>Tourism</MenuItem>
+                <MenuItem value="business"  sx={{fontSize: '.7rem'}}>Business</MenuItem>
+                <MenuItem value="study"  sx={{fontSize: '.7rem'}}>Study</MenuItem>
+                <MenuItem value="scientific/culture/sport"  sx={{fontSize: '.7rem'}}>Scientific - Cultural - Sport</MenuItem>
+                <MenuItem value="ngo"  sx={{fontSize: '.7rem'}}>NGO Member</MenuItem>
+                <MenuItem value="Journalist"  sx={{fontSize: '.7rem'}}>Journalist</MenuItem>
+                <MenuItem value="conference"  sx={{fontSize: '.7rem'}}>Conference - Religious</MenuItem>
             </Select>
             <TextField
                 name="destination_in_congo"
