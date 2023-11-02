@@ -14,7 +14,6 @@ import { Field } from 'formik';
 import {CountrySelect} from "./partials/CountrySelect";
 import { CitySelect } from './partials/CitySelect';
 
-
 interface Step1FormProps {
     values: any;
     handleChange: any;
@@ -103,7 +102,7 @@ export const VisaTwo: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 />
 
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <Field name='date_of_birth'>
+                <Field name='date_of_birth' size='small'>
                     {({field, form}: {field: any, form: any}) => (
                         <DatePicker
                             label="date of birth"

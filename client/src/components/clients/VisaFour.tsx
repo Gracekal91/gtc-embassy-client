@@ -44,16 +44,17 @@ export const VisaFour: React.FC<Step1FormProps> = ({values, handleChange}) => {
                 displayEmpty
                 inputProps={{ 'aria-label': 'Visa type' }}
                 sx={{
-                    marginBottom: '.5rem'
+                    marginBottom: '.5rem',
+                    fontSize: '.8rem'
                 }}
             >
-                <MenuItem value="" disabled>
+                <MenuItem value="" disabled sx={{fontSize: '.8rem'}}>
                     Select visa type
                 </MenuItem>
-                <MenuItem value="transit">Transit</MenuItem>
-                <MenuItem value="single">Single access point</MenuItem>
-                <MenuItem value="double">Double access point</MenuItem>
-                <MenuItem value="multiple">Multiple</MenuItem>
+                <MenuItem value="transit" sx={{fontSize: '.8rem'}}>Transit</MenuItem>
+                <MenuItem value="single" sx={{fontSize: '.8rem'}}>Single access point</MenuItem>
+                <MenuItem value="double" sx={{fontSize: '.8rem'}}>Double access point</MenuItem>
+                <MenuItem value="multiple" sx={{fontSize: '.8rem'}}>Multiple</MenuItem>
             </Select>
 
             {
@@ -84,15 +85,17 @@ export const VisaFour: React.FC<Step1FormProps> = ({values, handleChange}) => {
                     value={values.last_visa_number}
                     onChange={handleChange('last_visa_number')}
                 />
+
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <Field name='LastVisaDeliveranceDate'>
+                    <Field name='permit_expiration_date' size='small' sx={{fontSize: '.8rem'}}>
                         {({field, form}: {field: any, form: any}) => (
                             <DatePicker
-                                id='LastVisaDeliveranceDate'
-                                label='Exp. date'
+                                label='exp date'
+                                id='permit_expiration_date'
+                                sx={{fontSize: '.8rem'}}
                                 {...field}
                                 selected={field.value}
-                                onChange={(LastVisaDeliveranceDate) => form.setFieldValue(field.name, LastVisaDeliveranceDate)}
+                                onChange={(permit_expiration_date) => form.setFieldValue(field.name, permit_expiration_date)}
                             />
                         )}
                     </Field>

@@ -38,19 +38,6 @@ export const VisaForm = () => {
         setCurrentStep(currentStep - 1);
     };
 
-    // useEffect(() => {
-    //     const createVisa = async (dataToSubmit: any) => {
-    //         try {
-    //             const response = await axios.post('http://localhost:3500/api/v1/create_visa', dataToSubmit);
-    //             // Handle the response here
-    //             return response
-    //         } catch (error) {
-    //             // Handle any errors
-    //         }
-    //     }
-    //
-    // }, []);
-
     const submitMe =  async (values: any) => {
         console.log('VALUES', values);
         try {
@@ -113,7 +100,8 @@ export const VisaForm = () => {
                         last_visa_deliverance_date: '',
                         host_names: '',
                         host_number: '',
-                        host_address: ''
+                        host_address: '',
+                        permit_expiration_date: ''
                     }}
 
                     onSubmit={values => submitMe(values)}
@@ -134,9 +122,9 @@ export const VisaForm = () => {
                             {currentStep === 3 && <VisaThree  handleChange={handleChange}  values={values}/>}
                             {currentStep === 4 && <VisaFour  handleChange={handleChange}  values={values}/>}
 
-                            <Button startIcon={<ArrowBackIcon />} variant="outlined" size="small" onClick={handlePrevStep} disabled={currentStep === 1} style={{textTransform: 'capitalize', marginTop: '.5rem'}}>Prev</Button>
+                            <Button startIcon={<ArrowBackIcon />} variant="outlined" size="small" onClick={handlePrevStep} disabled={currentStep === 1} style={{textTransform: 'capitalize', marginTop: '.5rem', marginRight: '.4rem'}}>Prev</Button>
                             <Button endIcon={<ArrowForwardIcon />} variant="outlined" size="small" onClick={handleNextStep} disabled={currentStep === 4} style={{textTransform: 'capitalize', marginTop: '.5rem'}}>Next</Button>
-                            {currentStep === 4 && <Button type='submit' variant="outlined" size="small" style={{textTransform: 'capitalize', marginTop: '.5rem'}} startIcon={<BackupIcon />}
+                            {currentStep === 4 && <Button type='submit' variant="outlined" size="small" style={{textTransform: 'capitalize', marginTop: '.5rem', marginLeft: '.4rem'}} startIcon={<BackupIcon />}
                             >Submit</Button>}
                         </Form>
                     )}
