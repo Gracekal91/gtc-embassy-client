@@ -11,8 +11,8 @@ interface Country{
     values: any
 }
 
-export const CountrySelect: React.FC<Country> = ({handleChange, values}) => {
-    const [countryOfBirth, setCountryOfBirth]: any = useState(null);
+export const CountrySelect: React.FC<Country> = () => {
+
     const[country, setCountry]: any = useState(null);
     localStorage.setItem('country', JSON.stringify(country));
 
@@ -22,7 +22,7 @@ export const CountrySelect: React.FC<Country> = ({handleChange, values}) => {
             {({field, form}: {field: any,form: any }) => (
         <Autocomplete id="country_of_birth"
             {...field}
-            selected={field.value}
+            selected={field?.value}
                       onChange={(event, value) => {
                           // @ts-ignore
                           form.setFieldValue(field.name, value)
@@ -35,7 +35,7 @@ export const CountrySelect: React.FC<Country> = ({handleChange, values}) => {
             size="small"
             options={countries}
             autoHighlight
-            getOptionLabel={(option: any) => option.label}
+            getOptionLabel={(option: any) => option?.label || ''}
             renderOption={(props, option) => (
                 <Box component="li" sx={{ fontSize: '.65rem', '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                     <img
